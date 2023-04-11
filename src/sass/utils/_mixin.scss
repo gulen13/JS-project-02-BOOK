@@ -1,0 +1,57 @@
+// Section
+@mixin section($pt: $pb, $pb: 60px) {
+  padding-top: $pt;
+  padding-bottom: $pb;
+}
+// Fonts
+@mixin fonts(
+  $fs: false,
+  $lh: false,
+  $fw: false,
+  $ls: 0.1em,
+  $tt: false,
+  $clr: false
+) {
+  @if $fs {
+    font-size: $fs;
+  }
+  @if $fw {
+    font-weight: $fw;
+  }
+  @if $lh {
+    line-height: calc($lh / $fs);
+  }
+  @if $ls {
+    letter-spacing: $ls;
+  }
+  @if $tt {
+    text-transform: $tt;
+  }
+  @if $clr {
+    color: $clr;
+  }
+}
+
+//  Flex
+@mixin flex($dsp: false, $jc: false, $ai: false, $fw: false) {
+  @if $dsp {
+    display: $dsp;
+  }
+  @if $jc {
+    justify-content: $jc;
+  }
+  @if $ai {
+    align-items: $ai;
+  }
+  @if $fw {
+    flex-wrap: $fw;
+  }
+}
+
+// Transitions
+
+@mixin transition($property...) {
+  transition-property: $property;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--transition-cubic);
+}
