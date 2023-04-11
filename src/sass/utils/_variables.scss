@@ -1,0 +1,83 @@
+body {
+  // Fonts
+  --primary-font: DM Sans, sans-serif;
+
+  // Transition
+  --transition-duration: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Font colors
+  --logo-font-color: #000000;
+  --primary-font-color: #111111;
+  --second-font-color: #B4AFAF;
+  --categories-font-color: rgba(17, 17, 17, 0.6);
+  --underbtn-font-color: rgba(17, 17, 17, 0.5);
+  --btn-font-color: #FFFFFF;
+
+  // Accent colors
+  --primary-accent-color: #4F2EE8;
+  --second-accent-color: #EAC645;
+
+  // Background colors
+  --header-bg-color: #ffffff;
+  --main-bg-color: #F6F6F6;
+  --support-menu-bg-color: radial-gradient(183.6% 183.01% at 59.76% -23.42%, #4F2EE8 18.03%, #FFFFFF 100%);
+  --modal-bg-color: #ffffff;
+ 
+  // Border colors
+  --border-color: #111111;
+  --btn-border-color: #4F2EE8;
+  --list-border-color: rgba(79, 46, 232, 0.4);
+  --to-top-border-color: rgba(79, 46, 232, 0.3);
+
+  // Icons
+  --icon-color: #111111;
+
+  // Pagination
+  --arrow-back-color: #B4AFAF;
+  --arrow-next-color: #FFFFFF;
+  --not-active-txt-color: #111111;
+  --active-txt-color: #FFFFFF;
+  --active-bg-color: #111111;
+}
+
+.dark {
+  // Fonts
+  --primary-font: DM Sans, sans-serif;
+
+  // Transition
+  --transition-duration: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Font colors
+  --logo-font-color: #F3F3F3;;
+  --primary-font-color: #FFFFFF;
+  --second-font-color: #B4AFAF;
+  --categories-font-color: rgba(255, 255, 255, 0.6);
+  --underbtn-font-color: rgba(255, 255, 255, 0.5);
+  --btn-font-color: #FFFFFF;
+
+  // Accent colors
+  --primary-accent-color: #4F2EE8;
+  --second-accent-color: #EAC645;
+
+  // Background colors
+  --header-bg-color: #111111;
+  --main-bg-color: #202024;
+  --support-menu-bg-color: radial-gradient(183.6% 183.01% at 59.76% -23.42%, #4F2EE8 18.03%, #FFFFFF 100%);
+  --modal-bg-color: #202024;
+ 
+  // Border colors
+  --border-color: #FFFFFF;
+  --btn-border-color: #4F2EE8;
+  --list-border-color: rgba(79, 46, 232, 0.4);
+  --to-top-border-color: rgba(79, 46, 232, 0.3);
+
+  // Icons
+  --icon-color: #FFFFFF;
+
+  // Pagination
+  --arrow-back-color: #B4AFAF;
+  --arrow-next-color: #FFFFFF;
+  --not-active-txt-color: #B4AFAF;
+  --active-txt-color: #111111;
+  --active-bg-color:#FFFFFF;
+}
