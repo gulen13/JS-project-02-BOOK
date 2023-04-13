@@ -1,10 +1,5 @@
 <div class="mobile-menu" data-menu>
   <div class="container mobile-menu__container">
-    <button type="button" class="mobile-menu__close-button" data-menu-close>
-      <svg class="mobile-menu__close-icon" width="28" height="28">
-        <use href="../src/images/icons.svg#icon-close"></use>
-      </svg>
-    </button>
     <ul class="mobile-menu__list">
       <li class="mobile-menu__item">
         <button type="button" class="button-modal">
@@ -14,13 +9,18 @@
           </svg>
         </button>
       </li>
-      <li class="mobile-menu__item"></li>
-      <li class="mobile-menu__item"></li>
     </ul>
-    <button
-      type="button"
-      class="button-header button-header--change"
-      data-modal-buy-open
-    ></button>
+    <ul class="mobile-menu__btn">
+      <li class="mobile-menu__item">
+        <a href="#home" class="mobile-menu__home">HOME</a>
+      </li>
+      <li class="mobile-menu__item">
+        <a href="#shopping list" class="mobile-menu__shopping"
+          >SHOPPING LIST
+          <svg class="mobile-menu__icon" width="20" height="20">
+            <use href="../src/images/icons.svg#icon-cart"></use></svg
+        ></a>
+      </li>
+    </ul>
   </div>
 </div>
