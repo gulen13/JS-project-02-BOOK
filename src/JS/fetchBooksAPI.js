@@ -43,4 +43,8 @@ export class BooksAPI {
   resetPage() {
     this.page = 1;
   }
+
+  decrementPage() {
+    this.page -= 1;
+  }
 }
