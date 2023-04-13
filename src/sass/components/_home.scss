@@ -1,0 +1,11 @@
+.home{
+  @media screen and (min-width: 1440px) {
+    display: flex;
+  }
+}
+
+.sidebar{
+  @media screen and (min-width: 768px) and (max-width: 1439.8px) {
+    display: flex;
+  }
+}
