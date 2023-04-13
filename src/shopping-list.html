@@ -4,41 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping list</title>
-    <link rel="shortcut icon" type="image/png" href="./images/fav_icon.png">
+    <link rel="shortcut icon" type="image/png" href="./images/fav_icon.png" />
     <!-- custom styles -->
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
     <main>
-      <!-- include header -->
+      <include src="./partials/header.html"></include>
       <section class="shopping--section">
-        <div class="container">
+        <div class="shopping-container container">
           <div class="shopping-funds">
             <include src="./partials/sidebar-foundations.html"></include>
           </div>
-          <h1 class="shopping-header header">
-            Shopping <span class="shopping-header-part">List</span>
-          </h1>
-          <p class="shopping-notification">
-            This page is empty, add some books and proceed to order.
-          </p>
-          <picture>
-            <source
-              srcset="
-                ./images/shopping-list-M.png    1x,
-                ./images/shopping-list-M@2x.png 2x
-              "
-              media="(min-width: 768px)"
-            />
-            <source
-              srcset="
-                ./images/shopping-list-S.png    1x,
-                ./images/shopping-list-S@2x.png 2x
-              "
-              media="(max-width: 767px)"
-            />
-            <img src="./images/shopping-list-S.png" alt="Three books" />
-          </picture>
+          <div class="shopping-main">
+            <h1 class="shopping-title title">
+              Shopping <span class="shopping-title-part">List</span>
+            </h1>
+            <ul class="shopping-list"></ul>
+            <div class="shopping-wrapper">
+              <p class="shopping-notification">
+                This page is empty, add some books and proceed to order.
+              </p>
+              <picture>
+                <source
+                  srcset="
+                    ./images/shopping-list-M.png    1x,
+                    ./images/shopping-list-M@2x.png 2x
+                  "
+                  media="(min-width: 768px)"
+                />
+                <source
+                  srcset="
+                    ./images/shopping-list-S.png    1x,
+                    ./images/shopping-list-S@2x.png 2x
+                  "
+                  media="(max-width: 767px)"
+                />
+                <img src="./images/shopping-list-S.png" alt="Three books" />
+              </picture>
+            </div>
+            <div class="shopping-pagination"></div>
+          </div>
         </div>
       </section>
     </main>
