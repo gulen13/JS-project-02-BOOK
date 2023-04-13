@@ -1,0 +1,48 @@
+// light theme
+
+
+
+
+
+
+// dark theme
+body.dark {
+    background-color: var(--main-bg-color);
+}
+
+header.dark {
+    border: 1.5px solid var(--border-color);
+}
+
+.page-header__container.dark {
+    background-color: var(--header-bg-color);
+}
+
+.navigation.dark {
+    color: var(--primary-font-color);
+}
+
+.icon__lock.dark {
+    fill: var(--icon-color);
+}
+
+.categories__btn.dark {
+    &:hover,
+    &:focus {
+        color: var(--second-accent-color);
+    }
+}
+
+.books-section__title.dark {
+    color: var(--primary-font-color);
+}
+
+.list-markup__see-more-button.dark {
+    background-color: transparent;
+    color: var(--primary-font-color);
+    &:hover,
+    &:focus {
+        background-color: var(--primary-accent-color);
+    }
+}
+
