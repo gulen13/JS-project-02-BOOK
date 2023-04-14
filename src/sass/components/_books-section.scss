@@ -11,7 +11,7 @@
 }
 
 .books-section__title {
-  font-size: 35px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 119%;
   color: inherit;
@@ -136,6 +136,16 @@
   .card__paragraph {
     max-width: 218px;
   }
+
+  .books-section__title {
+    font-size: 48px;
+    line-height: 108%;
+  }
+
+  .block-for-books__title {
+    font-size: 48px;
+    line-height: 108%;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -168,4 +178,25 @@
   .card__paragraph {
     max-width: 180px;
   }
+}
+
+//````````````````` FOR SELECTED CATEGORY ``````````````````
+
+.block-for-books {
+}
+
+.block-for-books__title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 119%;
+  color: inherit;
+
+  margin-bottom: 40px;
+}
+
+.block-for-books__list {
+  display: flex;
+  gap: 40px 24px;
+
+  flex-wrap: wrap;
 }
