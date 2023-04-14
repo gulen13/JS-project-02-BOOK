@@ -108,6 +108,17 @@ export async function renderModal(bookID)  {
   }
 
   // Варіант 2
+
+  // function addToShoppingList() {
+  //   const oneBook = { ...book };
+  //   const shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+  //   shoppingList.push(oneBook);
+  //   localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+  //   isBookInShoppingList = true;
+  //   updateModalBtn();
+  // }
+
+  // Варіант 3
   
   // async function addToShoppingList() {
   //   const oneBook = { ...book };
