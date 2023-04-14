@@ -16,7 +16,7 @@ const handleSearchBooksList = async event => {
     renderCategoriesList(data);
   } catch (error) {
     Notiflix.Notify.warning();
-    console.log(error);
+    // console.log(error);
   }
 }
 
