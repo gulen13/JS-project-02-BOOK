@@ -10,5 +10,7 @@
 
   function toggleModal() {
     refs.menu.classList.toggle('is-open');
+    refs.openMenuBtn.classList.toggle('is-hidden');
+    refs.closeMenuBtn.classList.toggle('is-hidden');
   }
 })();
