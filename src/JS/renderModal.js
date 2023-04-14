@@ -99,14 +99,14 @@ function closeModal() {
   backdropEl.innerHTML = '';
 }
 
-// function handleCloseModal(event) {
-//   if (
-//     event.type === 'click' ||
-//     (event.type === 'keydown' && event.key === 'Escape')
-//   ) {
-//     closeModal();
-//   }
-// }
+function handleCloseModal(event) {
+  if (
+    event.type === 'click' ||
+    (event.type === 'keydown' && event.key === 'Escape')
+  ) {
+    closeModal();
+  }
+}
 
 // Данило
 
