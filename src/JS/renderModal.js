@@ -1,14 +1,13 @@
 import { BooksAPI } from './fetchBooksAPI.js';
 
-const modalEl = document.querySelector("[data-modal]")
-const closeModalBtnEl = document.querySelector("[data-modal-close]");
+const modalEl = document.querySelector('[data-modal]');
+const closeModalBtnEl = document.querySelector('[data-modal-close]');
 const addBookBtnEl = document.querySelector('.modal-book__btn');
 const backdropEl = document.querySelector('.backdrop');
 
 const booksAPI = new BooksAPI();
 
-export async function renderModal(bookID)  {
-
+export async function renderModal(bookID) {
   const book = await booksAPI.fetchBookByID(bookID);
 
   const { book_image, title, author, description, buy_links } = book;
@@ -62,89 +61,85 @@ export async function renderModal(bookID)  {
   updateModalBtn();
 }
 
-  function showModal() {
-    modalEl.classList.remove('is-hidden');
-    document.addEventListener('keydown', handleCloseModal);
-    closeModalBtnEl.addEventListener('click', closeModal);
-    backdropEl.addEventListener('click', closeModal);
-  }
-    
-  function closeModal() {
-    modalEl.classList.add('is-hidden');
-    document.removeEventListener('keydown', handleCloseModal);
-    closeModalBtnEl.removeEventListener('click', closeModal);
-    backdropEl.removeEventListener('click', closeModal);
-  }
-    
-  function handleCloseModal(event) {
-    if (event.type === 'click' || (event.type === 'keydown' && event.key === 'Escape')) {
+function showModal() {
+  modalEl.classList.remove('is-hidden');
+  document.addEventListener('keydown', handleCloseModal);
+  closeModalBtnEl.addEventListener('click', closeModal);
+  backdropEl.addEventListener('click', closeModal);
+}
+
+function closeModal() {
+  modalEl.classList.add('is-hidden');
+  document.removeEventListener('keydown', handleCloseModal);
+  closeModalBtnEl.removeEventListener('click', closeModal);
+  backdropEl.removeEventListener('click', closeModal);
+}
+
+function handleCloseModal(event) {
+  if (
+    event.type === 'click' ||
+    (event.type === 'keydown' && event.key === 'Escape')
+  ) {
     closeModal();
-    }
   }
+}
 
+// Данило
+//   const array = [];
 
+// addBookBtnEl.addEventListener('click', () => {
+//   array.push(oneBook);
+//   saveToLocalStorage('bookarray', array);
+// });
 
-  // Данило
-  //   const array = [];
+const isBookInShoppingList = false;
 
-  // addBookBtnEl.addEventListener('click', () => {
-  //   array.push(oneBook);
-  //   saveToLocalStorage('bookarray', array);
-  // });
+addBookBtnEl.addEventListener('click', addToShoppingList);
 
+function addToShoppingList() {
+  const oneBook = { ...book };
+  // Отримуємо з LocalStorage масив книжок (якщо він є)
+  const bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
+  bookArray.push(oneBook);
+  saveToLocalStorage('bookarray', bookArray);
+  isBookInShoppingList = true;
+  updateModalBtn();
+}
 
-  const isBookInShoppingList = false;
+// Варіант 2
 
-  addBookBtnEl.addEventListener('click', addToShoppingList);
-  
-  function addToShoppingList() {
-    const oneBook = { ...book };
-     // Отримуємо з LocalStorage масив книжок (якщо він є)
-    const bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
-    bookArray.push(oneBook);
-    saveToLocalStorage('bookarray', bookArray);
-    isBookInShoppingList = true;
-    updateModalBtn();
+// function addToShoppingList() {
+//   const oneBook = { ...book };
+//   const shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+//   shoppingList.push(oneBook);
+//   localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+//   isBookInShoppingList = true;
+//   updateModalBtn();
+// }
+
+// Варіант 3
+
+// async function addToShoppingList() {
+//   const oneBook = { ...book };
+//   const bookArray = await getItemFromLocalStorage('bookarray') || [];
+//   bookArray.push(oneBook);
+//   await saveToLocalStorage('bookarray', bookArray);
+//   isBookInShoppingList = true;
+//   updateModalBtn();
+//   }
+
+function updateModalBtn() {
+  if (isBookInShoppingList) {
+    addBookBtnEl.textContent = 'Remove from the shopping list';
+    const underBtnText = document.createElement('p');
+    underBtnText.textContent =
+      'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".';
+    underBtnText.classList.add('modal-book__underbtn');
+    modalEl.appendChild(underBtnText);
+  } else {
+    addBookBtnEl.textContent = 'Add to shopping list';
   }
+}
 
-  // Варіант 2
-
-  // function addToShoppingList() {
-  //   const oneBook = { ...book };
-  //   const shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
-  //   shoppingList.push(oneBook);
-  //   localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
-  //   isBookInShoppingList = true;
-  //   updateModalBtn();
-  // }
-
-  // Варіант 3
-  
-  // async function addToShoppingList() {
-  //   const oneBook = { ...book };
-  //   const bookArray = await getItemFromLocalStorage('bookarray') || [];
-  //   bookArray.push(oneBook);
-  //   await saveToLocalStorage('bookarray', bookArray);
-  //   isBookInShoppingList = true;
-  //   updateModalBtn();
-  //   }
-
-
-  function updateModalBtn() {
-    if (isBookInShoppingList) {
-      addBookBtnEl.textContent = 'Remove from the shopping list';
-      const underBtnText = document.createElement('p');
-      underBtnText.textContent = 'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".';
-      underBtnText.classList.add('modal-book__underbtn');
-      modalEl.appendChild(underBtnText);
-  
-    } else {
-      addBookBtnEl.textContent = 'Add to shopping list';
-    }
-  }
-
-
-  // src="${book_image ? book_image : './images/blank-M.jpg'}"/>
-  // ${title ? title : 'N/A'}
-  
-
+// src="${book_image ? book_image : './images/blank-M.jpg'}"/>
+// ${title ? title : 'N/A'}
