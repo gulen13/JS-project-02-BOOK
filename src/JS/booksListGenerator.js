@@ -69,7 +69,7 @@ function createCard(books, cardsAmount, cardsBlock) {
   for (let j = 0; j < cardsAmount; j++) {
     const blockCard = `
       
-        <li class="list-book__book-card  data-id=${books[j]._id}">
+        <li class="list-book__book-card"  data-id="${books[j]._id}">
           <a href="#">
             <img src="${books[j].book_image}" alt="${books[j].title}" class="book-card__img"></img>
             <h2 class="card__title">${books[j].title}</h2>
@@ -106,7 +106,7 @@ async function createMarkupCategory(category) {
   selectedCategoryBooks.data.forEach(book => {
     const blockCard = `
       
-        <li class="list-book__book-card  data-id=${book._id}">
+        <li class="list-book__book-card"  data-id="${book._id}">
           <a href="#">
             <img src="${book.book_image}" alt="${book.title}" class="book-card__img"></img>
             <h2 class="card__title">${book.title}</h2>

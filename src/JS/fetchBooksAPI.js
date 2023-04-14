@@ -18,10 +18,7 @@ export class BooksAPI {
     return response;
   }
 
-  async fetchBookByID() {
-    const searchParams = new URLSearchParams({
-      id: '_id',
-    });
+  async fetchBookByID(id) {
     const response = await axios.get(`${this.#BASE_URL}${id}`);
     return response;
   }
