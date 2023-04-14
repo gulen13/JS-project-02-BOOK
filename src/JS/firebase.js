@@ -1,4 +1,3 @@
-
 console.log('start v1');
 import { initializeApp } from 'firebase/app';
 import {
@@ -15,9 +14,11 @@ import {
   onAuthStateChanged,
   deleteUser,
   reauthenticateWithCredential,
+  signInWithEmailAndPassword,
   updateProfile,
   signOut,
 } from 'firebase/auth';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCKI9Dj7vqAk2upt61qv5a7F6gdwdA1Pn8',
@@ -32,16 +33,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 const todosCol = collection(db, 'todos');
+
 getDocs(todosCol);
-onAuthStateChanged(auth, currentUser => {
-  if (currentUser !== null) {
-    console.log('logged in!');
-    console.log(auth.currentUser.email);
-    console.log(auth.currentUser.displayName);
-  } else {
-    console.log('No user');
-  }
-});
+
 
 async function setData() {
   await setDoc(doc(db, 'user', 'nameuser'), {
@@ -59,15 +53,10 @@ async function getData() {
     console.log('No such document!');
   }
 }
-getData();
+// getData();
 
-function del() {
-  updateProfile(auth.currentUser, {
-    displayName: 'userName',
-  })
-    .then(() => {})
-    .catch(error => {});
-}
+
+ 
 
 const sigInBtn = document
   .querySelector('.sigIn')
@@ -79,7 +68,20 @@ const regBtn = document
   .querySelector('.reg')
   .addEventListener('click', regFunc);
 
-function sigInFunc() {}
+function sigInFunc(e) {
+    e.preventDefault();
+    const email = form[0].value
+    const password = form[1].value
+        
+        signInWithEmailAndPassword(auth, email, password).then
+        (ok=>{
+            return Notify.success("OK");
+        }).catch(error=>{
+            console.log(error.message);
+            if(error.message==='Firebase: Error (auth/wrong-password).')
+            return Notify.warning("wrong Pass");
+        });
+}
 function sigOutFunc() {
   signOut(auth)
     .then(() => {
@@ -90,4 +92,40 @@ function sigOutFunc() {
       console.log(error);
     });
 }
-function regFunc() {}
+const form = document
+  .querySelector('.form-test')
+  
+
+function regFunc(e) {
+    const email = form[0].value
+    const password = form[1].value
+        e.preventDefault();
+        createUserWithEmailAndPassword(auth, email, password);
+      }
+      
+const checkUser = document.querySelector('.check')
+// const userName = document.getElementById('userOnline').textContent = "n";
+onAuthStateChanged(auth, currentUser => {
+    if (currentUser !== null) {
+        
+      console.log('logged in!');
+      updateProfile(auth.currentUser, {
+        displayName: 'Jane Q. User',
+      })
+        .then(() => {})
+        .catch(error => {});
+    
+      const mail = auth.currentUser.email
+      console.log(mail);
+      console.log(auth.currentUser.displayName);
+      checkUser.style.background = 'lightgreen'
+     
+    }
+     
+        
+     else {
+      console.log('No user');
+      checkUser.style.background = 'black'
+    }
+  });
+  
