@@ -17,8 +17,6 @@ document.addEventListener('click', e => {
 
 })
 
-
-
 const booksAPI = new BooksAPI();
 
 export async function renderModal(bookID) {
@@ -71,10 +69,7 @@ export async function renderModal(bookID) {
   // updateModalBtn();
 
   addBookBtnEl.addEventListener('click', addToShoppingList(bookData));
-
 }
-
-
 
 function addToShoppingList(book) {
   const oneBook = { ...book };
@@ -104,14 +99,14 @@ function closeModal() {
   backdropEl.innerHTML = '';
 }
 
-function handleCloseModal(event) {
-  if (
-    event.type === 'click' ||
-    (event.type === 'keydown' && event.key === 'Escape')
-  ) {
-    closeModal();
-  }
-}
+// function handleCloseModal(event) {
+//   if (
+//     event.type === 'click' ||
+//     (event.type === 'keydown' && event.key === 'Escape')
+//   ) {
+//     closeModal();
+//   }
+// }
 
 // Данило
 
@@ -133,23 +128,48 @@ function handleCloseModal(event) {
 
 // function addToShoppingList() {
 //   const oneBook = { ...book };
-//   const shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
-//   shoppingList.push(oneBook);
-//   localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+//   // Отримуємо з LocalStorage масив книжок (якщо він є)
+//   const bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
+//   bookArray.push(oneBook);
+//   saveToLocalStorage('bookarray', bookArray);
 //   isBookInShoppingList = true;
 //   updateModalBtn();
 // }
 
-// Варіант 3
+// // Варіант 2
 
-// async function addToShoppingList() {
-//   const oneBook = { ...book };
-//   const bookArray = await getItemFromLocalStorage('bookarray') || [];
-//   bookArray.push(oneBook);
-//   await saveToLocalStorage('bookarray', bookArray);
-//   isBookInShoppingList = true;
-//   updateModalBtn();
+// // function addToShoppingList() {
+// //   const oneBook = { ...book };
+// //   const shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+// //   shoppingList.push(oneBook);
+// //   localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+// //   isBookInShoppingList = true;
+// //   updateModalBtn();
+// // }
+
+// // Варіант 3
+
+// // async function addToShoppingList() {
+// //   const oneBook = { ...book };
+// //   const bookArray = await getItemFromLocalStorage('bookarray') || [];
+// //   bookArray.push(oneBook);
+// //   await saveToLocalStorage('bookarray', bookArray);
+// //   isBookInShoppingList = true;
+// //   updateModalBtn();
+// //   }
+
+// function updateModalBtn() {
+//   if (isBookInShoppingList) {
+//     addBookBtnEl.textContent = 'Remove from the shopping list';
+//     const underBtnText = document.createElement('p');
+//     underBtnText.textContent =
+//       'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".';
+//     underBtnText.classList.add('modal-book__underbtn');
+//     modalEl.appendChild(underBtnText);
+//   } else {
+//     addBookBtnEl.textContent = 'Add to shopping list';
 //   }
+// }
 
 // let isBookInShoppingList = false;
 
