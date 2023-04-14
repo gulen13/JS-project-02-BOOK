@@ -5,12 +5,11 @@ const closeModalBtnEl = document.querySelector("[data-modal-close]");
 const addBookBtnEl = document.querySelector('.modal-book__btn');
 const backdropEl = document.querySelector('.backdrop');
 
-const booksAPI = new BooksAPI();
 
 export async function renderModal(bookID)  {
 
+  const booksAPI = new BooksAPI();
   const book = await booksAPI.fetchBookByID(bookID);
-
   const { book_image, title, author, description, buy_links } = book;
 
   const markup = `
@@ -99,6 +98,7 @@ export async function renderModal(bookID)  {
   
   function addToShoppingList() {
     const oneBook = { ...book };
+ // const oneBook = { book_image, title, author, description, buy_links, _id, list_name };
      // Отримуємо з LocalStorage масив книжок (якщо він є)
     const bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
     bookArray.push(oneBook);

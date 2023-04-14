@@ -1,4 +1,5 @@
 import { BooksAPI } from './fetchBooksAPI';
+import { renderModal } from './renderModal';
 
 const mainSectionDiv = document.querySelector('.books-container');
 
@@ -64,6 +65,14 @@ function createCard(books, cardsAmount, cardsBlock) {
 
     cardsBlock.innerHTML += blockForCard;
   }
-}
+
+    const bookCards = document.querySelectorAll('.list-book__book-card');
+      bookCards.forEach(card => {
+      const bookId = card.getAttribute('data-id');
+      card.addEventListener('click', () => {
+        renderModal(bookId);
+      });
+    });
+  }
 
 getTopBooks();
