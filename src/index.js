@@ -4,3 +4,5 @@ import './JS/booksListGenerator';
 import './JS/sidebar-categories';
 import './JS/renderModal';
 import './JS/light-dark-theme';
+
+import './JS/firebase'
