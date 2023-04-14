@@ -122,7 +122,6 @@ onAuthStateChanged(auth, currentUser => {
      
     }
      
-        
      else {
       console.log('No user');
       checkUser.style.background = 'black'
