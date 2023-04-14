@@ -26,9 +26,9 @@ export class BooksAPI {
     return response;
   }
 
-  async fetchBooksByCategory() {
+  async fetchBooksByCategory(category) {
     const searchParams = new URLSearchParams({
-      category: 'list_name',
+      category: `${category}`,
     });
     const response = await axios.get(
       `${this.#BASE_URL}category?${searchParams}`

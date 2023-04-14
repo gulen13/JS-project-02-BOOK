@@ -6,18 +6,18 @@
   height: 100%;
   background-color: var(--backdrop-color);
   z-index: 50;
-  //transition: 0.3s all;
+  transition: 0.3s all;
   // backdrop-filter: blur(2px);
 
-  // &.is-hidden {
-  //   opacity: 0;
-  //   visibility: hidden;
-  //   pointer-events: none;
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-  //   & .modal {
-  //     transform: translateX(-50%) translateY(-20%);
-  //   }
-  // }
+    & .modal {
+      transform: translateX(-50%) translateY(-20%);
+    }
+  }
 }
 
 .modal {
@@ -25,7 +25,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 335px;
+  width: 96%;
   height: auto;  
   padding: 40px 24px;
   background-color: var(--modal-bg-color);
@@ -33,10 +33,14 @@
   border-radius: 18px;
  
   transition: transform var(--transition);
-  z-index: 52;
+  z-index: 100;
+
+  @media screen and (min-width: 375px) {
+    width: 335px;
+  }
 
   @media screen and (min-width: 768px) {
-    min-width: 579px;
+    width: 579px;
     padding: 40px;
   }
 }
@@ -82,12 +86,10 @@
   width: 287px;
   height: 408px;
   border-radius: 8px;
-  border: 1px solid #111111;
 
   @media screen and (min-width: 768px) {
     width: 192px;
     height: 281px;
-    border: 1px solid #111111;
   }
 }
 
@@ -112,12 +114,16 @@
 
 .modal-book__title {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 4vw;
   line-height: 1.12;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--primary-font-color);
   margin-bottom: 4px;
+
+  @media screen and (min-width: 375px) {
+    font-size: 16px;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
@@ -129,11 +135,15 @@
 .modal-book__author {
   font-style: italic;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 3vw;
   line-height: 1.17;
   letter-spacing: -0.04em;
   color: var(--second-font-color);
   margin-bottom: 18px;
+
+  @media screen and (min-width: 375px) {
+    font-size: 12px;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -144,14 +154,20 @@
 
 .modal-book__about {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 4vw;
   line-height: 1.29;
   letter-spacing: -0.04em;
   color: var(--primary-font-color);
+//  overflow-y: scroll; //яка висота елемента?
+
+  @media screen and (min-width: 375px) {
+    font-size: 14px;
+  }
 }
 
 .book-stores {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
 
@@ -174,7 +190,7 @@
   margin: 0 auto;
   padding: 14px 20px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 4vw;
   line-height: 1.29;
   letter-spacing: -0.01em;
   text-transform: uppercase;
@@ -190,7 +206,32 @@
     background-color: var(--primary-accent-color);
   }
 
+  @media screen and (min-width: 375px) {
+    font-size: 14px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 100%;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.modal-book__underbtn {
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 3vw;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: var(--underbtn-font-color);
+
+  @media screen and (min-width: 375px) {
+    font-size: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+    line-height: 1.17;
   }
 }
