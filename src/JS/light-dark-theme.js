@@ -22,8 +22,8 @@ themeSwitcher.addEventListener('click', function (e) {
   iconLogo.setAttribute(
     'href',
     e.target.checked
-      ? '/icons.adfc4680.svg#icon-logo-dark'
-      : '/icons.adfc4680.svg#icon-logo'
+      ? '/JS-project-02-BOOK/icons.31d2e38d.svg#icon-logo-dark'
+      : '/JS-project-02-BOOK/icons.31d2e38d.svg#icon-logo'
   );
 
   handleChange(iconShop, theme);
