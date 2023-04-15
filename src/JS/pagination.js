@@ -1,10 +1,11 @@
 import Pagination from 'tui-pagination';
+const paginationEl = document.querySelector('.tui-pagination');
 
 
-export function addPagination({ total_results }, page) {
+export function addPagination( total, page) {
   const options = {
-    totalItems: total_results,
-    itemsPerPage: 20,
+    totalItems: total,
+    itemsPerPage: 3,
     visiblePages: 3,
     page: page,
     centerAlign: true,
@@ -29,5 +30,6 @@ export function addPagination({ total_results }, page) {
     },
   };
 
-  return new Pagination('pagination', options);
+  const pagination = new Pagination(paginationEl, options);
+  return pagination;
 }

@@ -1,5 +1,5 @@
 import { saveToLocalStorage } from './localStarage';
-
+import { addPagination } from './pagination';
 const shoppingUl = document.querySelector('.shopping-list');
 const shoppingWrapper = document.querySelector('.shopping-wrapper');
 const localStorageKey = 'bookarray';
@@ -10,6 +10,7 @@ if (
 ) {
   shoppingWrapper.hidden = true;
   renderShoppingList(JSON.parse(localStorage.getItem(localStorageKey)));
+
 } else {
   shoppingWrapper.hidden = false;
 }
@@ -78,3 +79,7 @@ function renderShoppingList(books) {
     .join('');
   shoppingUl.insertAdjacentHTML('beforeend', markup);
 }
+
+const total = JSON.parse(localStorage.getItem(localStorageKey)).length;
+addPagination(total, 1);
+
