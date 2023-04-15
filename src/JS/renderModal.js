@@ -18,7 +18,7 @@ const modalWrapEl = document.querySelector('.modal');
 let bookData;
 
 homeBooks.addEventListener('click', e => {
-  let test = e.target.parentElement.parentElement.getAttribute('data-id');
+  let test = e.target.parentElement.parentElement.parentElement.getAttribute('data-id');
   renderModal(test);
 
   // console.log(test);
