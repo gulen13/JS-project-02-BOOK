@@ -12,10 +12,12 @@ const modalEl = document.querySelector('[data-modal]');
 const closeModalBtnEl = document.querySelector('[data-modal-close]');
 const addBookBtnEl = document.querySelector('.modal-book__btn');
 const backdropEl = document.querySelector('.modal-main');
+const homeBooks = document.querySelector('.books-section');
 
 let bookData;
 
-document.addEventListener('click', e => {
+homeBooks.addEventListener('click', e => {
+
   let test = e.target.parentElement.parentElement.getAttribute('data-id');
   renderModal(test);
 
@@ -29,7 +31,7 @@ export async function renderModal(bookID) {
 
   const { book_image, title, author, description, buy_links } = book.data;
 
-  console.log(buy_links.find(link => link.name === 'Amazon').url);
+  // console.log(buy_links.find(link => link.name === 'Amazon').url);
 
   bookData = book.data;
 

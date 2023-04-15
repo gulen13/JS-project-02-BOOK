@@ -8,7 +8,8 @@ window.addEventListener('resize', function (event) {
   getTopBooks();
 });
 
-async function getTopBooks() {
+export async function getTopBooks() {
+  mainSectionDiv.innerHTML="";
   try {
     const booksAPI = new BooksAPI();
     const booksCategories = await booksAPI.fetchTopBooks();
@@ -83,11 +84,11 @@ function createCard(books, cardsAmount, cardsBlock) {
   }
 }
 
-async function createMarkupCategory(category) {
+export async function createMarkupCategory(category) {
   const booksAPI = new BooksAPI();
   const selectedCategoryBooks = await booksAPI.fetchBooksByCategory(category);
 
-  console.log(selectedCategoryBooks.data);
+  // console.log(selectedCategoryBooks.data);
 
   const cardsBlock = `
       
