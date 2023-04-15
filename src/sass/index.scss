@@ -3,6 +3,7 @@
 @import './base/visually-hidden';
 @import './utils/variables';
 @import './utils/mixin';
+@import './components/light-dark-theme';
 @import './components/container';
 @import './components/header';
 @import './components/mobile-menu';
@@ -20,7 +21,7 @@
 @import './components/book-stores-icons';
 @import './components/shopping-list';
 
-@import './components/light-dark-theme';
+@import '../../node_modules/swiper/swiper-bundle.min.css';
 
 //FireBase AUTH
 @import './components/fire-base-auth';

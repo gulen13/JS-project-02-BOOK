@@ -56,3 +56,9 @@ margin: 120px 55px 302px;
       margin-top: 40px;
     }
 }
+
+.shopping-funds {
+  @media screen and (max-width: 1439.8px) {
+display: none;
+  }
+}
