@@ -1,8 +1,10 @@
 import Pagination from 'tui-pagination';
-import { saveToLocalStorage } from './localStarage';
+// import { saveToLocalStorage } from './localStarage';
 
 const paginationEl = document.querySelector('.tui-pagination');
 const localStorageKey = 'bookarray';
+
+let page = 1;
 
 export function addPagination(total, page) {
   const options = {
@@ -44,4 +46,4 @@ console.log(JSON.parse(localStorage.getItem(localStorageKey)));
 
 const booksArray= JSON.parse(localStorage.getItem(localStorageKey)); 
 
-addPagination(booksArray, 1);
+addPagination(booksArray, page);
