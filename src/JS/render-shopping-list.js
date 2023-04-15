@@ -46,7 +46,11 @@ function renderShoppingList(books) {
         </div>
         <ul class="shopping-list--link-list">
           <li>
-            <a href="${book.buy_links.find(link => link.name === 'Amazon').url};
+            <a href="${
+              book.buy_links.find(link => link.name === 'Amazon').url
+                ? book.buy_links.find(link => link.name === 'Amazon').url
+                : 'https://www.amazon.com/ref=nav_logo'
+            };
             })}">
             <img class="book-stores__img" srcset=" ${amazon} 1x, ${amazon2x}   2x
             "src="${amazon}" alt="Amazon" width="62" height="19">
@@ -55,6 +59,8 @@ function renderShoppingList(books) {
           <li>
             <a href="${
               book.buy_links.find(link => link.name === 'Apple Books').url
+                ? book.buy_links.find(link => link.name === 'Apple Books').url
+                : 'https://www.apple.com/ua/apple-books/'
             };
             })}">
             <img class="book-stores__img" srcset=" ${ibook} 1x, ${ibook2x}   2x
@@ -64,6 +70,8 @@ function renderShoppingList(books) {
           <li>
             <a href="${
               book.buy_links.find(link => link.name === 'Bookshop').url
+                ? book.buy_links.find(link => link.name === 'Bookshop').url
+                : 'https://bookshop.org/'
             };
             })}">
             <img class="book-stores__img" srcset=" ${bookshop} 1x, ${bookshop2x}   2x
@@ -89,16 +97,18 @@ function renderShoppingList(books) {
 }
 
 function deleteBookFromShopList(event) {
-  let id = event.target.parentElement.parentElement.getAttribute('data-id');
-  let li = event.target.parentElement.parentElement;
-  let ind = uniqueBook.findIndex(e => e._id === id);
-  if (ind !== -1) {
-    uniqueBook.splice(ind, 1);
-    saveToLocalStorage(localStorageKey, uniqueBook);
-  }
+  if (event.target.parentElement.classList.value === 'shopping-list--btn') {
+    let id = event.target.parentElement.parentElement.getAttribute('data-id');
+    let li = event.target.parentElement.parentElement;
+    let ind = uniqueBook.findIndex(e => e._id === id);
+    if (ind !== -1) {
+      uniqueBook.splice(ind, 1);
+      saveToLocalStorage(localStorageKey, uniqueBook);
+    }
 
-  li.remove();
+    li.remove();
+  }
 }
 
-const shoppingDelBtn = document.querySelector('.shopping-list--btn');
+const shoppingDelBtn = document.querySelector('.shopping-list');
 shoppingDelBtn.addEventListener('click', deleteBookFromShopList);
