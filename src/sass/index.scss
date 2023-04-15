@@ -3,6 +3,7 @@
 @import './base/visually-hidden';
 @import './utils/variables';
 @import './utils/mixin';
+@import './components/light-dark-theme';
 @import './components/container';
 @import './components/header';
 @import './components/mobile-menu';
@@ -11,7 +12,19 @@
 @import './components/home';
 @import './components/sidebar-categories';
 @import './components/sidebar-foundations';
+@import './components/pagination';
+
+// BOOKS SECTION
 @import './components/books-section';
+@import './components/see-more-button';
+
 @import './components/book-stores-icons';
 @import './components/shopping-list';
+
 @import '../../node_modules/swiper/swiper-bundle.min.css';
+
+//FireBase AUTH
+@import './components/fire-base-auth';
+
+//Render Shopping List
+@import './components/render-shopping-list';

@@ -1,5 +1,18 @@
 .categories {
   margin-top: 40px;
+  max-width: 335px;
+  height: 228px;
+
+  overflow: hidden;
+  overflow-y: scroll;
+
+  @media screen and (min-width: 768px) {
+    width: 337px;
+    height: 472px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 356px;
+  }
 }
 
 .categories__list {
@@ -8,20 +21,9 @@
   align-items: flex-start;
   padding: 0px;
   gap: 24px;
-  max-width: 335px;
-  height: 228px;
-
-  overflow: hidden;
-  overflow: scroll;
 
   @media screen and (min-width: 768px) {
     gap: 32px;
-    max-width: 337px;
-    height: 472px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    max-width: 356px;
   }
 }
 .categories__item {
@@ -47,18 +49,49 @@
   color: var(--categories-font-color);
   background: transparent;
 
+  transition-property: font-weight, text-transform, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
+
+  // @include transition($font-weight, $text-transform, $color);
+
+  &:hover,
+  &:focus {
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--primary-accent-color);
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
   @media screen and (min-width: 768px) {
-    max-width: 318px;
+    width: 318px;
+    height: 24px;
     font-size: 18px;
     line-height: 1.33;
   }
 }
 
-.categories__btn:hover,
-.categories__btn:focus {
-  font-weight: 700;
+// custom scrollbar
+.categories::-webkit-scrollbar {
+  width: 8px;
+}
+.categories::-webkit-scrollbar-thumb {
+  width: 8px;
+  height: 114px;
 
-  text-transform: uppercase;
+  background: #e0e0e0;
+  border-radius: 12px;
 
-  color: var(--primary-accent-color);
+  @media screen and (min-width: 768px) {
+    height: 167px;
+  }
+}
+
+.categories::-webkit-scrollbar-track {
+  background: transparent;
 }

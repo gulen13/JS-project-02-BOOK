@@ -18,17 +18,14 @@ export class BooksAPI {
     return response;
   }
 
-  async fetchBookByID() {
-    const searchParams = new URLSearchParams({
-      id: '_id',
-    });
+  async fetchBookByID(id) {
     const response = await axios.get(`${this.#BASE_URL}${id}`);
     return response;
   }
 
-  async fetchBooksByCategory() {
+  async fetchBooksByCategory(category) {
     const searchParams = new URLSearchParams({
-      category: 'list_name',
+      category: `${category}`,
     });
     const response = await axios.get(
       `${this.#BASE_URL}category?${searchParams}`

@@ -1,96 +1,141 @@
-import { fetchBookByID } from './fetchBooksAPI.js';
+import { Loading } from 'notiflix';
+import { BooksAPI } from './fetchBooksAPI.js';
+import { saveToLocalStorage } from './localStarage.js';
+import amazon from '../images/amazon.png';
+import amazon2x from '../images/amazon@2x.png';
+import ibook from '../images/ibook.png';
+import ibook2x from '../images/ibook@2x.png';
+import bookshop from '../images/bookshop.png';
+import bookshop2x from '../images/bookshop@2x.png';
 
-const modalEl = document.querySelector("[data-modal]")
-const closeModalBtnEl = document.querySelector('.modal__btn-close');
+const modalEl = document.querySelector('[data-modal]');
+const closeModalBtnEl = document.querySelector('[data-modal-close]');
 const addBookBtnEl = document.querySelector('.modal-book__btn');
-const backdropEl = document.querySelector('.backdrop');
+const backdropEl = document.querySelector('.modal-main');
+const homeBooks = document.querySelector('.books-section');
 
+let bookData;
 
-export function renderModal(book) {
-  const { book_image, title, author, description } = book;
+homeBooks.addEventListener('click', e => {
+
+  let test = e.target.parentElement.parentElement.getAttribute('data-id');
+  renderModal(test);
+
+  // console.log(test);
+});
+
+const booksAPI = new BooksAPI();
+
+export async function renderModal(bookID) {
+  const book = await booksAPI.fetchBookByID(bookID);
+
+  const { book_image, title, author, description, buy_links } = book.data;
+
+  // console.log(buy_links.find(link => link.name === 'Amazon').url);
+
+  bookData = book.data;
+
   const markup = `
-  <div class="backdrop is-hidden" data-modal>
-    <div class="modal">
-      <button type="button" class="modal__btn-close" data-modal-close>
-        <svg class="modal__icon-close" width="28" height="28">
-          <use href="./images/icons.svg#close"></use>
-        </svg>
-      </button>
+
       <div class="modal-book">
-        <img class="modal-book__img" src="${book_image}" alt="Book cover" loading="lazy"/>
+        <img class="modal-book__img" src="${book_image ? book_image : './images/blank-M.jpg'}" alt="Book cover" loading="lazy"/>
         <div class="modal-book__description">
           <div class="modal-book__info">
-            <h2 class="modal-book__title">${title}</h2>
-            <h3 class="modal-book__author">${author}</h3>
-            <p class="modal-book__about">${description}</p>
+            <h2 class="modal-book__title">${title ? title : 'N/A'}</h2>
+            <h3 class="modal-book__author">${author ? author : 'N/A'}</h3>
+            <p class="modal-book__about">${
+              description ? description : 'N/A'
+            }</p>
           </div>
-
           <div>
             <ul class="book-stores">
               <li class="book-stores__item">
-                <a class="book-stores__link" href="https://amazon.com" target="_blank" rel="noopener noreferrer"
+                <a class="book-stores__link" href="${
+                  buy_links.find(link => link.name === 'Amazon').url
+                }" target="_blank" rel="noopener noreferrer"
                   aria-label="Amazon icon">
-                  <svg class="book-stores__icon" width="62" height="19">
-                  <use href="./images/icons.svg#icon-amazon"></use></svg></a>
+                  <img class="book-stores__img" srcset=" ${amazon} 1x, ${amazon2x}   2x
+                 "src="${amazon}" alt="Amazon" width="62" height="19">
+                  </a>
               </li>
               <li class="book-stores__item">
-                <a class="book-stores__link" href="https://books.apple.com/" target="_blank" rel="noopener noreferrer"
+                <a class="book-stores__link" href="${
+                  buy_links.find(link => link.name === 'Apple Books').url
+                }" target="_blank" rel="noopener noreferrer"
                   aria-label="Apple Books icon">
-                  <svg class="book-stores__icon" width="32" height="32">
-                  <use href="./images/icons.svg#icon-ibook"></use></svg></a>
+                  <img class="book-stores__img" srcset=" ${ibook} 1x, ${ibook2x}   2x
+                 "src="${ibook}" alt="Apple Books" width="33" height="32"></a>
               </li>
               <li class="book-stores__item">
-                <a class="book-stores__link" href="https://bookshop.org/" target="_blank" rel="noopener noreferrer"
+                <a class="book-stores__link" href="${
+                  buy_links.find(link => link.name === 'Bookshop').url
+                }" target="_blank" rel="noopener noreferrer"
                   aria-label="Bookshop icon">
-                  <svg class="book-stores__icon" width="38" height="36">
-                  <use href="./images/icons.svg#icon-book-shop"></use></svg></a>
+                  <img class="book-stores__img" srcset=" ${bookshop} 1x, ${bookshop2x}   2x
+                 "src="${bookshop}" alt="Bookshops" width="38" height="36"></a>
               </li>
             </ul>   
           </div>
         </div>
-      </div>  
-      <button type="button" class="modal-book__btn">Add to shopping list</button>
-    </div>
-  </div>`;
+      </div>  `;
 
-  document.body.insertAdjacentHTML('beforeend', markup);
+  backdropEl.insertAdjacentHTML('afterbegin', markup);
+  showModal();
+  // updateModalBtn();
+
+  addBookBtnEl.addEventListener('click', addToShoppingList(bookData));
 }
 
-export function showModal() {
+function addToShoppingList(book) {
+  const oneBook = { ...book };
+  // Отримуємо з LocalStorage масив книжок (якщо він є)
+  const bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
+  // if (bookArray.lenght > 0 ) {
+  // }
+
+  bookArray.push(oneBook);
+  saveToLocalStorage('bookarray', bookArray);
+  // isBookInShoppingList = true;
+  // updateModalBtn();
+}
+
+function showModal() {
   modalEl.classList.remove('is-hidden');
+  document.addEventListener('keydown', handleCloseModal);
+  closeModalBtnEl.addEventListener('click', closeModal);
+  // backdropEl.addEventListener('click', closeModal);
 }
 
 function closeModal() {
   modalEl.classList.add('is-hidden');
+  document.removeEventListener('keydown', handleCloseModal);
+  closeModalBtnEl.removeEventListener('click', closeModal);
+  // backdropEl.removeEventListener('click', closeModal);
+  backdropEl.innerHTML = '';
 }
 
-closeModalBtnEl.addEventListener('click', () => {
-  closeModal();
-});
-
-backdropEl.addEventListener('click', (event) => {
-  if (event.target === backdropEl) {
+function handleCloseModal(event) {
+  if (
+    event.type === 'click' ||
+    (event.type === 'keydown' && event.key === 'Escape')
+  ) {
     closeModal();
   }
-});
+}
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    closeModal();
-  }
-});
+// let isBookInShoppingList = false;
 
-addBookBtnEl.addEventListener('click', addToShoppingList);
+// ДІСТАТИ З ЛОКАЛ СТОРЕДЖ
 
-export function addToShoppingList() {
-  const bookObject = { ...book };
-  localStorage.setItem(bookObject.KEY, JSON.stringify(bookObject));
-  
-  addBookBtnEl.textContent = 'Remove from the shopping list';
-  
-  const underBtnText = document.createElement('p');
-  underBtnText.textContent = 'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".';
-  modalEl.appendChild(underBtnText);
-  }
-  
-
+// function updateModalBtn() {
+//   if (localStorage.getItem) {
+//     addBookBtnEl.textContent = 'Remove from the shopping list';
+//     const underBtnText = document.createElement('p');
+//     underBtnText.textContent =
+//       'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".';
+//     underBtnText.classList.add('modal-book__underbtn');
+//     modalEl.appendChild(underBtnText);
+//   } else {
+//     addBookBtnEl.textContent = 'Add to shopping list';
+//   }
+// }

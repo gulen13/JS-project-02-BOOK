@@ -1,0 +1,29 @@
+.list-markup__see-more-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 124px;
+  height: 46px;
+
+  border: 2px solid var(--primary-accent-color);
+  border-radius: 40px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+
+  text-transform: uppercase;
+  color: inherit;
+
+  background-color: white;
+
+  transition: color var(--transition), background-color var(--transition);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary-accent-color);
+    color: white;
+  }
+}

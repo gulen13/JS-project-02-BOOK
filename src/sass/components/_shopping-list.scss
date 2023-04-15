@@ -1,10 +1,12 @@
 .shopping--section {
-  padding: 40px 20px;
+  background-color: var(--main-bg-color);
+  margin-top: 60px;
+  padding: 40px 0px;
   @media screen and (min-width: 768px) {
-    padding: 40px 32px;
+    padding: 40px 0px;
     }
         @media screen and (min-width: 1440px) {
-          padding: 40px 24px;
+          padding: 40px 0px;
         }
 }
 
