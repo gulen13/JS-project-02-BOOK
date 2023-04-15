@@ -1,6 +1,7 @@
 import { BooksAPI } from './fetchBooksAPI';
 
-const mainSectionDiv = document.querySelector('.books-container');
+const mainSectionDiv = document.querySelector('.books-best-container');
+const booksTitileHome = document.querySelector('.books-section__title'); 
 
 window.addEventListener('resize', function (event) {
   mainSectionDiv.innerHTML = '';
@@ -9,6 +10,7 @@ window.addEventListener('resize', function (event) {
 });
 
 export async function getTopBooks() {
+  booksTitileHome.classList.remove('display-none');
   mainSectionDiv.innerHTML="";
   try {
     const booksAPI = new BooksAPI();
@@ -85,6 +87,7 @@ function createCard(books, cardsAmount, cardsBlock) {
 }
 
 export async function createMarkupCategory(category) {
+  booksTitileHome.classList.add('display-none');
   const booksAPI = new BooksAPI();
   const selectedCategoryBooks = await booksAPI.fetchBooksByCategory(category);
 
