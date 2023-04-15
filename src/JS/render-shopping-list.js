@@ -95,9 +95,8 @@ function deleteBookFromShopList(event) {
   if (ind !== -1) {
     uniqueBook.splice(ind, 1);
     saveToLocalStorage(localStorageKey, uniqueBook);
-    console.log(JSON.parse(localStorage.getItem(localStorageKey)));
   }
-  console.log(id);
+
   li.remove();
 }
 
