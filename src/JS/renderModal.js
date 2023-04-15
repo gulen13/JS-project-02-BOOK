@@ -8,16 +8,16 @@ import ibook2x from '../images/ibook@2x.png';
 import bookshop from '../images/bookshop.png';
 import bookshop2x from '../images/bookshop@2x.png';
 
-const modalEl = document.querySelector('[data-modal]');
+const backdropEl = document.querySelector('[data-modal]');
 const closeModalBtnEl = document.querySelector('[data-modal-close]');
 const addBookBtnEl = document.querySelector('.modal-book__btn');
-const backdropEl = document.querySelector('.modal-main');
+const modalEl = document.querySelector('.modal-main');
 const homeBooks = document.querySelector('.books-section');
+const modalWrapEl = document.querySelector('.modal');
 
 let bookData;
 
 homeBooks.addEventListener('click', e => {
-
   let test = e.target.parentElement.parentElement.getAttribute('data-id');
   renderModal(test);
 
@@ -38,7 +38,9 @@ export async function renderModal(bookID) {
   const markup = `
 
       <div class="modal-book">
-        <img class="modal-book__img" src="${book_image ? book_image : './images/blank-M.jpg'}" alt="Book cover" loading="lazy"/>
+        <img class="modal-book__img" src="${
+          book_image ? book_image : './images/blank-M.jpg'
+        }" alt="Book cover" loading="lazy"/>
         <div class="modal-book__description">
           <div class="modal-book__info">
             <h2 class="modal-book__title">${title ? title : 'N/A'}</h2>
@@ -79,20 +81,31 @@ export async function renderModal(bookID) {
         </div>
       </div>  `;
 
-  backdropEl.insertAdjacentHTML('afterbegin', markup);
+  modalEl.insertAdjacentHTML('afterbegin', markup);
   showModal();
   // updateModalBtn();
 
   addBookBtnEl.addEventListener('click', addToShoppingList(bookData));
 }
+const underBtnText = document.createElement('p');
 
 function addToShoppingList(book) {
-  const oneBook = { ...book };
+  let oneBook = { ...book };
+  console.log(oneBook);
   // Отримуємо з LocalStorage масив книжок (якщо він є)
-  const bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
+  let bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
   // if (bookArray.lenght > 0 ) {
   // }
-
+  console.log(bookArray);
+  if (bookArray.find(book => book._id === oneBook._id)) {
+    addBookBtnEl.textContent = 'Remove from the shopping list';
+    underBtnText.textContent =
+      'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".';
+    underBtnText.classList.add('modal-book__underbtn');
+    modalWrapEl.appendChild(underBtnText);
+    return;
+  }
+  addBookBtnEl.textContent = 'Add to shopping list';
   bookArray.push(oneBook);
   saveToLocalStorage('bookarray', bookArray);
   // isBookInShoppingList = true;
@@ -100,18 +113,21 @@ function addToShoppingList(book) {
 }
 
 function showModal() {
-  modalEl.classList.remove('is-hidden');
+  backdropEl.classList.remove('is-hidden');
   document.addEventListener('keydown', handleCloseModal);
   closeModalBtnEl.addEventListener('click', closeModal);
-  // backdropEl.addEventListener('click', closeModal);
+  backdropEl.addEventListener('click', closeModal);
 }
 
 function closeModal() {
-  modalEl.classList.add('is-hidden');
+  backdropEl.classList.add('is-hidden');
   document.removeEventListener('keydown', handleCloseModal);
   closeModalBtnEl.removeEventListener('click', closeModal);
-  // backdropEl.removeEventListener('click', closeModal);
-  backdropEl.innerHTML = '';
+  backdropEl.removeEventListener('click', closeModal);
+  setTimeout(() => {
+    modalEl.innerHTML = '';
+  }, 300);
+  underBtnText.remove();
 }
 
 function handleCloseModal(event) {
