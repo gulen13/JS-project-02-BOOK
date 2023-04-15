@@ -1,48 +1,45 @@
-// light theme
-
-
-
-
-
-
 // dark theme
-body.dark {
-    background-color: var(--main-bg-color);
-}
 
 header.dark {
-    border: 1.5px solid var(--border-color);
-}
-
-.page-header__container.dark {
-    background-color: var(--header-bg-color);
+  border: 1.5px solid var(--border-color);
+  & .mobile-menu-open{
+    fill: var(--primary-font-color);
+  }
 }
 
 .navigation.dark {
-    color: var(--primary-font-color);
+  color: var(--primary-font-color);
+  & li:hover,
+  & li:focus {
+    color: var(--header-bg-color);
+  }
 }
 
 .icon__lock.dark {
-    fill: var(--icon-color);
+  fill: currentColor;
 }
 
-.categories__btn.dark {
+.categories.dark {
+  & .categories__btn {
     &:hover,
     &:focus {
-        color: var(--second-accent-color);
+      color: var(--second-accent-color);
     }
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #11111199;
+  }
 }
 
 .books-section__title.dark {
-    color: var(--primary-font-color);
+  color: var(--primary-font-color);
 }
 
-.list-markup__see-more-button.dark {
-    background-color: transparent;
+.books-container.dark {
+  & .list-markup__see-more-button {
     color: var(--primary-font-color);
-    &:hover,
-    &:focus {
-        background-color: var(--primary-accent-color);
-    }
+  }
+  & h2{
+    color: var(--primary-font-color);
+  }
 }
-
