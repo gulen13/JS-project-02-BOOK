@@ -1,10 +1,13 @@
 import Pagination from 'tui-pagination';
+import { saveToLocalStorage } from './localStarage';
 
+const paginationEl = document.querySelector('.tui-pagination');
+const localStorageKey = 'bookarray';
 
-export function addPagination({ total_results }, page) {
+export function addPagination(total, page) {
   const options = {
-    totalItems: total_results,
-    itemsPerPage: 20,
+    totalItems: total.length,
+    itemsPerPage: 3,
     visiblePages: 3,
     page: page,
     centerAlign: true,
@@ -29,5 +32,16 @@ export function addPagination({ total_results }, page) {
     },
   };
 
-  return new Pagination('pagination', options);
+  const pagination = new Pagination(paginationEl, options);
+
+  return pagination;
 }
+
+// const booksArray= JSON.parse(localStorage.getItem(localStorageKey)); 
+// console.log(booksArray);
+// addPagination(booksArray, 1); 
+console.log(JSON.parse(localStorage.getItem(localStorageKey)));
+
+const booksArray= JSON.parse(localStorage.getItem(localStorageKey)); 
+
+addPagination(booksArray, 1);
