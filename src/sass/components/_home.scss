@@ -1,5 +1,5 @@
 .home{
-margin-top: 60px;
+// margin-top: 60px;
 
   @media screen and (min-width: 1440px) {
     display: flex;
@@ -12,6 +12,6 @@ margin-top: 60px;
   }
 }
 
-.home-section{
+body{
   background-color: var(--main-bg-color);
 }
