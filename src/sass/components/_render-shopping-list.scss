@@ -1,3 +1,9 @@
+.shopping-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .shopping-list--item {
   display: grid;
   grid-template-columns: 0.3fr 145px;
@@ -60,7 +66,6 @@
   font-size: 16px;
   line-height: 1.12;
   margin-bottom: 4px;
-  height: 18px;
 }
 
 .shopping-list--category {
@@ -92,6 +97,7 @@
   @media screen and (max-width: 767px) {
     display: none;
     &__mobile {
+      margin-top: 4px;
       font-weight: 400;
       font-size: 12px;
       line-height: 1.17;
