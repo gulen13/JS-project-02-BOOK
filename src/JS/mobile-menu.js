@@ -11,4 +11,11 @@ const refs = {
     refs.menu.classList.toggle('is-open');
     refs.openMenuBtn.classList.toggle('is-hidden');
     refs.closeMenuBtn.classList.toggle('is-hidden');
+
+    if (refs.openMenuBtn.classList.contains('is-hidden')) {
+      document.body.style.overflow = 'hidden';
+    }
+    if (refs.closeMenuBtn.classList.contains('is-hidden')) {
+      document.body.style.overflow = '';
+    }
   };

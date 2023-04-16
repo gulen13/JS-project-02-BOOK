@@ -81,7 +81,11 @@ export async function renderModal(bookID) {
   showModal();
   // updateModalBtn();
 
-  addBookBtnEl.addEventListener('click', addToShoppingList(bookData));
+  addBookBtnEl.addEventListener('click', async () => {
+    const book = await booksAPI.fetchBookByID(bookID);
+    bookData = book.data;
+    addToShoppingList(bookData);
+  });
 }
 const underBtnText = document.createElement('p');
 
@@ -128,7 +132,7 @@ function closeModal() {
 }
 
 function handleCloseModal(event) {
-  if (event.target === backdropEl) {
+  if (event.target === backdropEl || (event.type === 'keydown' && event.key === 'Escape')) {
     closeModal();
   }
 }
