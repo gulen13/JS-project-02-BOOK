@@ -9,24 +9,24 @@
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    
     <include src="./partials/header.html"></include>
-    
     <main>
-      <div class="home container">
-        <!-- <include src="./partials/fire-base-Auth.html"></include> -->
-        <div class="sidebar">
-          <div class="sidebar-categories">
-            <include src="./partials/sidebar-categories.html"></include>
+      <section class="home-section">
+        <div class="home container">
+          <!-- <include src="./partials/fire-base-Auth.html"></include> -->
+          <div class="sidebar">
+            <div class="sidebar-categories">
+              <include src="./partials/sidebar-categories.html"></include>
+            </div>
+            <div class="sidebar-foundations">
+              <include src="./partials/sidebar-foundations.html"></include>
+            </div>
           </div>
-          <div class="sidebar-foundations">
-            <include src="./partials/sidebar-foundations.html"></include>
+          <div class="books-section">
+            <include src="./partials/books-section.html"></include>
           </div>
         </div>
-        <div class="books-section">
-          <include src="./partials/books-section.html"></include>
-        </div>
-      </div>
+      </section>
       <include src="./partials/modal-window.html"></include>
     </main>
     <include src="./partials/mobile-menu.html"></include>

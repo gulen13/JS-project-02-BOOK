@@ -1,6 +1,7 @@
 import { BooksAPI } from './fetchBooksAPI';
 
-const mainSectionDiv = document.querySelector('.books-container');
+const mainSectionDiv = document.querySelector('.books-best-container');
+const booksTitileHome = document.querySelector('.books-section__title'); 
 
 window.addEventListener('resize', function (event) {
   mainSectionDiv.innerHTML = '';
@@ -9,6 +10,7 @@ window.addEventListener('resize', function (event) {
 });
 
 export async function getTopBooks() {
+  booksTitileHome.classList.remove('display-none');
   mainSectionDiv.innerHTML="";
   try {
     const booksAPI = new BooksAPI();
@@ -72,7 +74,10 @@ function createCard(books, cardsAmount, cardsBlock) {
       
         <li class="list-book__book-card"  data-id="${books[j]._id}">
           <a href="#">
+          <div class="card-thumb">
             <img src="${books[j].book_image}" alt="${books[j].title}" class="book-card__img"></img>
+            <p class="card-overlay-text card-overlay">quick view</p>
+            </div>
             <h2 class="card__title">${books[j].title}</h2>
             <p class="card__paragraph">${books[j].author}</p>
           </a>  
@@ -85,6 +90,7 @@ function createCard(books, cardsAmount, cardsBlock) {
 }
 
 export async function createMarkupCategory(category) {
+  booksTitileHome.classList.add('display-none');
   const booksAPI = new BooksAPI();
   const selectedCategoryBooks = await booksAPI.fetchBooksByCategory(category);
 
@@ -109,7 +115,10 @@ export async function createMarkupCategory(category) {
       
         <li class="list-book__book-card"  data-id="${book._id}">
           <a href="#">
+          <div class="card-thumb">
             <img src="${book.book_image}" alt="${book.title}" class="book-card__img"></img>
+            <p class="card-overlay-text card-overlay">quick view</p>
+            </div>
             <h2 class="card__title">${book.title}</h2>
             <p class="card__paragraph">${book.author}</p>
           </a>  
