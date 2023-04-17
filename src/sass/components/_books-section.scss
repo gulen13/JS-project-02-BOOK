@@ -40,10 +40,8 @@
 
 .list-markup__block {
   display: flex;
-  display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-content: center;
-
   width: 335px;
 }
 
@@ -66,7 +64,7 @@
 .book-card__img {
   width: 335px;
   height: 485px;
-border-radius: 8px;
+  border-radius: 8px;
   margin-bottom: 14px;
 }
 
@@ -117,7 +115,7 @@ border-radius: 8px;
   }
 
   .list-markup__block {
-    width: 100%;
+    width: 708px;
     margin-bottom: 20px;
   }
   .list-book__book-card {
