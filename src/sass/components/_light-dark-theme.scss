@@ -2,8 +2,13 @@
 
 header.dark {
   border: 1.5px solid var(--border-color);
-  & .mobile-menu-open {
+  & .mobile-menu-open,
+  & .mobile-menu__close-icon {
     fill: var(--primary-font-color);
+    &:hover,
+    &:focus {
+      fill: var(--primary-accent-color);
+    }
   }
 }
 
@@ -60,5 +65,30 @@ header.dark {
   }
   & .shopping-list--description {
     color: var(--primary-font-color);
+  }
+  & .book-stores__img {
+    color: var(--primary-font-color);
+  }
+
+  & .tui-first-child,
+  & .tui-last-child {
+    border: 1px solid var(--border-color);
+  }
+}
+
+
+
+.mobile-menu__container.dark {
+  & .mobile-menu__home,
+  & .mobile-menu__shopping {
+    color: var(--primary-font-color);
+    &:hover,
+    &:focus {
+      color: var(--header-bg-color);
+    }
+  }
+  & .button-modal__logout {
+    background-color: var( --primary-font-color);
+    color: var(--header-bg-color);
   }
 }
