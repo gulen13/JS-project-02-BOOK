@@ -1,0 +1,120 @@
+@keyframes background-animate {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  transition: 1s all;
+  visibility: visible;
+  opacity: 1;
+  &.done {
+    visibility: hidden;
+    opacity: 0;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--main-bg-color);
+  animation: animateBg 10s linear infinite;
+  @keyframes animateBg {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+}
+.loader {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(18deg * var(--i)));
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: rem(15);
+      height: rem(15);
+      background-color: #ffae2b;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ffae2b, 0 0 20px #ffae2b, 0 0 40px #ffae2b,
+        0 0 60px #ffae2b, 0 0 80px #ffae2b, 0 0 100px #ffae2b;
+      animation: animate 2s linear infinite;
+      @keyframes animate {
+        0% {
+          transform: scale(1);
+        }
+        80%,
+        100% {
+          transform: scale(0);
+        }
+      }
+    }
+  }
+  &__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+    font-size: 100px;
+    line-height: 1.2;
+
+    color: transparent;
+
+    -webkit-text-stroke: 0.1vw var(--primary-accent-color);
+    text-transform: uppercase;
+
+    @media screen and (max-width: 768px) {
+      font-size: 30px;
+    }
+  }
+}
+
+.loader__loading::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  color: var(--primary-accent-color);
+  -webkit-text-stroke: 0vw var(--primary-accent-color);
+  border-right: 2px solid var(--primary-accent-color);
+  overflow: hidden;
+  animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    width: 0;
+  }
+  70% {
+    width: 100%;
+  }
+}

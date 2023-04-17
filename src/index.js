@@ -6,5 +6,6 @@ import './JS/sidebar-foundations';
 import './JS/renderModal';
 import './JS/index-light-dark-theme';
 import './JS/renderCtgrOnBtn';
-import './JS/scroll-up'
-// import './JS/firebase'
+import './JS/scroll-up';
+// import './JS/firebase';
+import './JS/preloader';
