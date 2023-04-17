@@ -121,6 +121,12 @@
   align-items: flex-end;
 }
 
+.list-book__book-card {
+  @media screen and (min-width: 768px) {
+    width: 218px;
+  }
+}
+
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
   screen and (min-resolution: 192dpi) and (min-width: 768px),
   screen and (min-resolution: 2dppx) and (min-width: 768px) {
@@ -128,9 +134,6 @@
     width: 708px;
     padding-left: 0px;
     padding-right: 0px;
-  }
-  .list-book__book-card {
-    width: 218px;
   }
 
   .card__paragraph {
