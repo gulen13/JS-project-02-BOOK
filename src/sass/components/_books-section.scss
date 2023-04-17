@@ -44,7 +44,7 @@
   justify-content: space-between;
   width: 100%;
 
-@media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     width: 708px;
     margin-bottom: 20px;
   }
@@ -71,6 +71,11 @@
   height: 485px;
   border-radius: 8px;
   margin-bottom: 14px;
+
+  @media screen and (min-width: 768px) {
+    width: 218px;
+    height: 316px;
+  }
 }
 
 .card__title {
@@ -86,6 +91,8 @@
   margin-bottom: 4px;
 
   width: 335px;
+  height: 20px;
+overflow: hidden;
 }
 
 .card__paragraph {
@@ -120,12 +127,6 @@
   }
   .list-book__book-card {
     width: 218px;
-  }
-
-  .book-card__img {
-    width: 218px;
-    height: 316px;
-    border-radius: 8px;
   }
 
   .card__title {
@@ -181,8 +182,6 @@
 
 //````````````````` FOR SELECTED CATEGORY ``````````````````
 
-.block-for-books {
-}
 
 .block-for-books__title {
   font-size: 32px;
