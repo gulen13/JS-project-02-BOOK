@@ -42,7 +42,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 335px;
+  width: 100%;
+
+@media screen and (min-width: 768px){
+    width: 708px;
+    margin-bottom: 20px;
+  }
 }
 
 .books-section__markup {
@@ -112,11 +117,6 @@
     width: 708px;
     padding-left: 0px;
     padding-right: 0px;
-  }
-
-  .list-markup__block {
-    width: 708px;
-    margin-bottom: 20px;
   }
   .list-book__book-card {
     width: 218px;
@@ -198,4 +198,8 @@
   gap: 40px 24px;
 
   flex-wrap: wrap;
+}
+
+.card-thumb {
+  max-width: 375px;
 }
