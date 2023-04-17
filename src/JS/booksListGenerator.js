@@ -1,22 +1,17 @@
 import { BooksAPI } from './fetchBooksAPI';
 
 const mainSectionDiv = document.querySelector('.books-best-container');
-const booksTitileHome = document.querySelector('.books-section__title');
+const booksTitileHome = document.querySelector('.books-section__title'); 
 
-addEventListener('resize', event => {
-  if (
-    (window.innerWidth > 767 && currentRenderWidth < 768) ||
-    (window.innerWidth > 1439 && currentRenderWidth < 1440) ||
-    (window.innerWidth < 1440 && currentRenderWidth > 1439) ||
-    (window.innerWidth < 768 && currentRenderWidth > 767)
-  ) {
-    location.reload();
-  }
+window.addEventListener('resize', function (event) {
+  mainSectionDiv.innerHTML = '';
+
+  getTopBooks();
 });
 
 export async function getTopBooks() {
   booksTitileHome.classList.remove('display-none');
-  mainSectionDiv.innerHTML = '';
+  mainSectionDiv.innerHTML="";
   try {
     const booksAPI = new BooksAPI();
     const booksCategories = await booksAPI.fetchTopBooks();
@@ -34,10 +29,9 @@ export async function getTopBooks() {
 }
 
 function adaptiveMarkup(books, cardsBlock) {
-  currentRenderWidth = window.innerWidth;
-  if (currentRenderWidth < 768) {
+  if (window.innerWidth < 768) {
     createCard(books, 1, cardsBlock);
-  } else if (currentRenderWidth > 767 && currentRenderWidth < 1440) {
+  } else if (window.innerWidth < 1440) {
     createCard(books, 3, cardsBlock);
   } else {
     createCard(books, 5, cardsBlock);
@@ -100,13 +94,12 @@ export async function createMarkupCategory(category) {
   const booksAPI = new BooksAPI();
   const selectedCategoryBooks = await booksAPI.fetchBooksByCategory(category);
 
+  // console.log(selectedCategoryBooks.data);
+
   const cardsBlock = `
       
       <div class="block-for-books">
-      <h2 class="block-for-books__title">
-  ${category.split(' ').slice(0, -1).join(' ')}
-  <span style="color: #4F2EE8;">${category.split(' ').pop()}</span>
-</h2>
+      <h2 class="block-for-books__title">${category}</h2>
       <ul class="block-for-books__list"></ul>
       </div>
       
@@ -134,7 +127,6 @@ export async function createMarkupCategory(category) {
     `;
 
     cardsContainer.innerHTML += blockCard;
-    window.scroll(0, 0);
   });
 }
 
