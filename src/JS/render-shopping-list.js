@@ -16,8 +16,8 @@ if (
   JSON.parse(localStorage.getItem(localStorageKey)).length > 0
 ) {
   shoppingWrapper.hidden = true;
-  getUniqueBook(JSON.parse(localStorage.getItem(localStorageKey)));
-  renderShoppingList(uniqueBook);
+  // getUniqueBook(JSON.parse(localStorage.getItem(localStorageKey)));
+  // renderShoppingList(uniqueBook);
 } else {
   shoppingWrapper.hidden = false;
 }
