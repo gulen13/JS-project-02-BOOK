@@ -7,7 +7,7 @@
   padding-left: 0px;
   padding-right: 0px;
 
-  width: 335px;
+  width: 100%;
 }
 
 .books-section__title {
@@ -40,11 +40,14 @@
 
 .list-markup__block {
   display: flex;
-  display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-content: center;
+  width: 100%;
 
-  width: 335px;
+  @media screen and (min-width: 768px) {
+    width: 708px;
+    margin-bottom: 20px;
+  }
 }
 
 .books-section__markup {
@@ -66,8 +69,13 @@
 .book-card__img {
   width: 335px;
   height: 485px;
-border-radius: 8px;
+  border-radius: 8px;
   margin-bottom: 14px;
+
+  @media screen and (min-width: 768px) {
+    width: 218px;
+    height: 316px;
+  }
 }
 
 .card__title {
@@ -83,6 +91,12 @@ border-radius: 8px;
   margin-bottom: 4px;
 
   width: 335px;
+  height: 20px;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    max-width: 218px;
+  }
 }
 
 .card__paragraph {
@@ -107,6 +121,12 @@ border-radius: 8px;
   align-items: flex-end;
 }
 
+.list-book__book-card {
+  @media screen and (min-width: 768px) {
+    width: 218px;
+  }
+}
+
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
   screen and (min-resolution: 192dpi) and (min-width: 768px),
   screen and (min-resolution: 2dppx) and (min-width: 768px) {
@@ -116,23 +136,9 @@ border-radius: 8px;
     padding-right: 0px;
   }
 
-  .list-markup__block {
-    width: 100%;
-    margin-bottom: 20px;
-  }
   .list-book__book-card {
-    width: 218px;
-  }
-
-  .book-card__img {
-    width: 218px;
-    height: 316px;
-    border-radius: 8px;
-  }
-
-  .card__title {
-    max-width: 218px;
-  }
+      width: 218px;
+    }
 
   .card__paragraph {
     max-width: 218px;
@@ -182,9 +188,6 @@ border-radius: 8px;
 }
 
 //````````````````` FOR SELECTED CATEGORY ``````````````````
-
-.block-for-books {
-}
 
 .block-for-books__title {
   font-size: 32px;

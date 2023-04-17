@@ -6,17 +6,35 @@
   @media screen and (max-width: 767.8px) {
     height: 64px;
   }
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
 .page-header {
   background-color: var(--header-bg-color);
-  position: fixed;
+  // position: fixed;
   overflow: hidden;
   width: 100%;
   border: 1.5px solid #111111;
   border-radius: 0px 0px 8px 8px;
-  top: 0;
+  // top: 0;
+  // left: 60;
   z-index: 100;
+
+  @media screen and (min-width: 375px) {
+    width: 375px;
+  }
+    // tablet
+    @media screen and (min-width: 768px) {
+      width: 768px;
+    }
+  
+    // desktop
+    @media screen and (min-width: 1440px) {
+      width: 1440px;
+    }
+
 }
 
 .logo__img {
