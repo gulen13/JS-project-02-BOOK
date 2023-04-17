@@ -16,16 +16,19 @@ if (
   JSON.parse(localStorage.getItem(localStorageKey)).length > 0
 ) {
   shoppingWrapper.hidden = true;
-  renderShoppingList(JSON.parse(localStorage.getItem(localStorageKey)));
+  getUniqueBook(JSON.parse(localStorage.getItem(localStorageKey)));
+  renderShoppingList(uniqueBook);
 } else {
   shoppingWrapper.hidden = false;
 }
 
-function renderShoppingList(books) {
-  uniqueBook = Array.from(new Set(books.map(item => JSON.stringify(item)))).map(
-    item => JSON.parse(item)
-  );
+export function getUniqueBook(books) {
+  return (uniqueBook = Array.from(
+    new Set(books.map(item => JSON.stringify(item)))
+  ).map(item => JSON.parse(item)));
+}
 
+export function renderShoppingList(uniqueBook) {
   const markup = uniqueBook
     .map(book => {
       return `
@@ -93,7 +96,6 @@ function renderShoppingList(books) {
     })
     .join('');
   shoppingUl.insertAdjacentHTML('beforeend', markup);
-  return uniqueBook;
 }
 
 function deleteBookFromShopList(event) {
