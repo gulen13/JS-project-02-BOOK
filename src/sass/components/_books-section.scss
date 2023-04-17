@@ -92,7 +92,11 @@
 
   width: 335px;
   height: 20px;
-overflow: hidden;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    max-width: 218px;
+  }
 }
 
 .card__paragraph {
@@ -127,10 +131,6 @@ overflow: hidden;
   }
   .list-book__book-card {
     width: 218px;
-  }
-
-  .card__title {
-    max-width: 218px;
   }
 
   .card__paragraph {
@@ -182,7 +182,6 @@ overflow: hidden;
 
 //````````````````` FOR SELECTED CATEGORY ``````````````````
 
-
 .block-for-books__title {
   font-size: 32px;
   font-weight: 700;
@@ -197,8 +196,4 @@ overflow: hidden;
   gap: 40px 24px;
 
   flex-wrap: wrap;
-}
-
-.card-thumb {
-  max-width: 375px;
 }

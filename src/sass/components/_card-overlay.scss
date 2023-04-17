@@ -2,6 +2,14 @@
   position: relative;
   overflow: hidden;
   margin: 0;
+  width: 335px;
+
+  @media screen and (min-width: 768px) {
+    width: 218px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 180px;
+}
 }
 .card-thumb:hover .card-overlay {
   transform: translateY(0);
