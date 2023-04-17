@@ -66,7 +66,7 @@ export async function renderModal(bookID) {
               <li class="book-stores__item">
                 <a class="book-stores__link" href="${buy_links.find(link => link.name === 'Amazon').url
                 ? book.buy_links.find(link => link.name === 'Amazon').url
-                : 'https://www.amazon.com/ref=nav_logo'
+                : 'https://amazon.com'
     }" target="_blank" rel="noopener noreferrer"
                   aria-label="Amazon icon">
                   <img class="book-stores__img" srcset=" ${amazon} 1x, ${amazon2x} 2x
@@ -76,7 +76,7 @@ export async function renderModal(bookID) {
               <li class="book-stores__item">
                 <a class="book-stores__link" href="${buy_links.find(link => link.name === 'Apple Books').url
                 ? book.buy_links.find(link => link.name === 'Apple Books').url
-                : 'https://www.apple.com/ua/apple-books/'
+                : 'https://apple.com/apple-books/'
     }" target="_blank" rel="noopener noreferrer"
                   aria-label="Apple Books icon">
                   <img class="book-stores__img" srcset=" ${ibook} 1x, ${ibook2x} 2x
@@ -85,7 +85,7 @@ export async function renderModal(bookID) {
               <li class="book-stores__item">
                 <a class="book-stores__link" href="${buy_links.find(link => link.name === 'Bookshop').url
                 ? book.buy_links.find(link => link.name === 'Bookshop').url
-                : 'https://www.bookshop.org/books/'
+                : 'https://bookshop.org/books/'
     }" target="_blank" rel="noopener noreferrer"
                   aria-label="Bookshop icon">
                   <img class="book-stores__img" srcset=" ${bookshop} 1x, ${bookshop2x} 2x
