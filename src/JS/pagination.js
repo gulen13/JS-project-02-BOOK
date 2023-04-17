@@ -1,16 +1,20 @@
 import Pagination from 'tui-pagination';
-// import { saveToLocalStorage } from './localStarage';
+import { saveToLocalStorage } from './localStarage';
+import { renderShoppingList } from './render-shopping-list';
+import { getUniqueBook } from './render-shopping-list';
 
 const paginationEl = document.querySelector('.tui-pagination');
 const localStorageKey = 'bookarray';
+const shoppingUl = document.querySelector('.shopping-list');
 
-let page = 1;
+
+// let page = 1;
 
 export function addPagination(total, page) {
   const options = {
     totalItems: total.length,
     itemsPerPage: 3,
-    visiblePages: 3,
+    visiblePages: 2,
     page: page,
     centerAlign: true,
     firstItemClassName: 'tui-first-child',
@@ -39,11 +43,32 @@ export function addPagination(total, page) {
   return pagination;
 }
 
-// const booksArray= JSON.parse(localStorage.getItem(localStorageKey)); 
-// console.log(booksArray);
-// addPagination(booksArray, 1); 
-console.log(JSON.parse(localStorage.getItem(localStorageKey)));
 
-const booksArray= JSON.parse(localStorage.getItem(localStorageKey)); 
+const booksArray= getUniqueBook(JSON.parse(localStorage.getItem(localStorageKey)));
+console.log(booksArray);
+// console.log(uniqueBook);
+const booksPerPage = 3;
+let pagination;
 
-addPagination(booksArray, page);
+if (booksArray.length > 0) {
+pagination = addPagination(booksArray, 1);
+pagination.on('beforeMove', renderNextPage);
+};
+
+
+function renderFirstPage() {
+    renderShoppingList(booksArray.slice(0,3));
+};
+
+renderFirstPage();
+// pagination.on('beforeMove', renderNextPage);
+
+
+function renderNextPage(eventData) {
+  shoppingUl.innerHTML = "";
+  console.log(eventData);
+  const start = (eventData.page - 1) * booksPerPage;
+  const pageItems = booksArray.slice(start, start + booksPerPage);
+  console.log(start, pageItems);
+  renderShoppingList(pageItems);
+}
