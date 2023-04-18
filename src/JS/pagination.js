@@ -19,7 +19,7 @@ export function addPagination(total, page) {
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
     template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      page: '<a href="#" class="tui-page-btn theme">{{page}}</a>',
       currentPage:
         '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
       moveButton:
@@ -52,7 +52,7 @@ let pagination;
 
 if (
   JSON.parse(localStorage.getItem(localStorageKey)) &&
-  JSON.parse(localStorage.getItem(localStorageKey)).length > 0
+  JSON.parse(localStorage.getItem(localStorageKey)).length > 3
 ) {
   pagination = addPagination(
     JSON.parse(localStorage.getItem(localStorageKey)),
@@ -81,13 +81,13 @@ function renderNextPage(eventData) {
     JSON.parse(localStorage.getItem(localStorageKey)).length > 0
   ) {
     shoppingUl.innerHTML = '';
-    console.log(eventData);
+    // console.log(eventData);
     const start = (eventData.page - 1) * booksPerPage;
     const pageItems = JSON.parse(localStorage.getItem(localStorageKey)).slice(
       start,
       start + booksPerPage
     );
-    console.log(start, pageItems);
+    // console.log(start, pageItems);
     renderShoppingList(pageItems);
   }
-}
+  }
