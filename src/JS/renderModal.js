@@ -180,8 +180,8 @@ function showModal(book) {
   if (bookArray.find(book => book._id === oneBook._id)) {
     // debugger;
     console.log(bookArray.find(book => book._id === oneBook._id))
-    addBookBtnEl.classList.remove('visually-hidden');
-    deleteBookBtnEl.classList.add('visually-hidden');
+    addBookBtnEl.classList.add('visually-hidden');
+    deleteBookBtnEl.classList.remove('visually-hidden');
   }
 }
 
