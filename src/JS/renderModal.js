@@ -93,18 +93,22 @@ export async function renderModal(bookID) {
             </ul>   
           </div>
         </div>
-      </div>  `;
+      </div>  
+      `;
 
   document.body.style.overflow = 'hidden';
   modalEl.insertAdjacentHTML('afterbegin', markup);
 
   let oneBook = { ...bookData };
   // Отримуємо з LocalStorage масив книжок (якщо він є)
-  let bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
-  if (bookArray.find(book => book._id === oneBook._id)) {
-    deleteBookBtnEl.classList.remove('visually-hidden');
-    addBookBtnEl.classList.add('visually-hidden');
-  }
+  // let bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
+  // console.log(bookArray.find(book => book._id === oneBook._id))
+  // if (bookArray.find(book => book._id === oneBook._id)) {
+  //   // debugger;
+  //   console.log(bookArray.find(book => book._id === oneBook._id))
+  //   addBookBtnEl.classList.remove('visually-hidden');
+  //   deleteBookBtnEl.classList.add('visually-hidden');
+  // }
 
   showModal(book);
 
@@ -112,11 +116,13 @@ export async function renderModal(bookID) {
     const book = await booksAPI.fetchBookByID(bookID);
     bookData = book.data;
     addToShoppingList(bookData);
+    console.log('ДОДАВАННЯ')
   });
   deleteBookBtnEl.addEventListener('click', async () => {
     const book = await booksAPI.fetchBookByID(bookID);
     bookData = book.data;
     deleteBookFromShopList(bookData);
+    console.log('ПРИБИРАННЯ')
   });
 }
 
@@ -129,15 +135,17 @@ function addToShoppingList(book) {
   if (bookArray.find(book => book._id === oneBook._id)) {
     return;
   }
-  addBookBtnEl.textContent = 'Remove from the shopping list';
+  // addBookBtnEl.textContent = 'Remove from the shopping list';
   underBtnText.textContent =
     'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".';
   underBtnText.classList.add('modal-book__underbtn');
   modalWrapEl.appendChild(underBtnText);
   bookArray.push(oneBook);
   saveToLocalStorage('bookarray', bookArray);
+  deleteBookBtnEl.classList.remove('visually-hidden');
+  addBookBtnEl.classList.add('visually-hidden');
 
-  addBookBtnEl.removeEventListener('click', addToShoppingList(bookData));
+  // addBookBtnEl.removeEventListener('click', addToShoppingList(bookData));
 };
 
 function deleteBookFromShopList(book) {
@@ -146,24 +154,35 @@ function deleteBookFromShopList(book) {
   // Отримуємо з LocalStorage масив книжок (якщо він є)
   let bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
   if (bookArray.find(book => book._id === oneBook._id)) {
-    console.log("DONE")
-    deleteBookBtnEl.classList.add('visually-hidden');
+    console.log(bookArray)
     addBookBtnEl.classList.remove('visually-hidden');
+    deleteBookBtnEl.classList.add('visually-hidden');
+
 
     let index = bookArray.findIndex(e => e._id === oneBook._id);
     bookArray.splice(index, 1);
     saveToLocalStorage('bookarray', bookArray);
-    deleteBookBtnEl.removeEventListener('click', deleteBookFromShopList(bookData));
+    // deleteBookBtnEl.removeEventListener('click', deleteBookFromShopList(bookData));
 
     return;
     }
 }
 
-function showModal() {
+function showModal(book) {
   backdropEl.classList.remove('is-hidden');
   document.addEventListener('keydown', handleCloseModal);
   closeModalBtnEl.addEventListener('click', closeModal);
   document.addEventListener('click', handleCloseModal);
+
+  let oneBook = { ...bookData };
+  let bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
+  console.log(bookArray.find(book => book._id === oneBook._id))
+  if (bookArray.find(book => book._id === oneBook._id)) {
+    // debugger;
+    console.log(bookArray.find(book => book._id === oneBook._id))
+    addBookBtnEl.classList.remove('visually-hidden');
+    deleteBookBtnEl.classList.add('visually-hidden');
+  }
 }
 
 function closeModal() {
@@ -176,7 +195,7 @@ function closeModal() {
     modalEl.innerHTML = '';
   }, 300);
   underBtnText.remove();
-  addBookBtnEl.textContent = 'Add to shopping list';
+  // addBookBtnEl.textContent = 'Add to shopping list';
 }
 
 function handleCloseModal(event) {
