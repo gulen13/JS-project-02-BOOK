@@ -59,14 +59,10 @@
 
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
-  color: #fff;
+  color: var(--header-bg-color);
   background: #111111;
 
   cursor: default;
-}
-
-.tui-pagination .tui-is-selected:hover {
-  background-color: #111111;
 }
 
 // .tui-pagination .tui-first-child.tui-is-selected,
