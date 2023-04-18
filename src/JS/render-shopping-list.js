@@ -8,7 +8,6 @@ import bookshop2x from '../images/bookshop@2x.png';
 import sprite from '../images/icons.svg';
 // import { addPagination } from './pagination';
 
-
 const shoppingUl = document.querySelector('.shopping-list');
 const shoppingWrapper = document.querySelector('.shopping-wrapper');
 const localStorageKey = 'bookarray';
@@ -56,7 +55,7 @@ export function renderShoppingList(bookArray) {
                 : 'https://www.amazon.com/ref=nav_logo'
             };
             })}">
-            <img class="book-stores__img" srcset=" ${amazon} 1x, ${amazon2x}   2x
+            <img class="book-stores__img img-amazon" srcset=" ${amazon} 1x, ${amazon2x}   2x
             "src="${amazon}" alt="Amazon" width="62" height="19">
             </a>
           </li>
@@ -126,11 +125,13 @@ function deleteBookFromShopList(event) {
       // renderShoppingList(JSON.parse(localStorage.getItem(localStorageKey)));
       console.log(ind);
       console.log(bookArray);
-      const page = Math.ceil((ind+1)/3);
-      const start = (page-1) * 3;
+      const page = Math.ceil((ind + 1) / 3);
+      const start = (page - 1) * 3;
       const end = start + 3;
       console.log(start, end);
-      const paginatedData = JSON.parse(localStorage.getItem(localStorageKey)).slice(start, end);
+      const paginatedData = JSON.parse(
+        localStorage.getItem(localStorageKey)
+      ).slice(start, end);
       console.log(paginatedData);
       renderShoppingList(paginatedData);
       // addPagination(JSON.parse(localStorage.getItem(localStorageKey)),1);
