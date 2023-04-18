@@ -71,6 +71,9 @@
   @media screen and (max-width: 370px) {
     max-width: 30vw;
   }
+        @media screen and (max-width: 300px) {
+          margin-top: 30px;
+        }
 }
 
 .shopping-list--category {
@@ -82,6 +85,9 @@
   @media screen and (min-width: 768px) {
     margin-bottom: 14px;
   }
+    @media screen and (max-width: 370px) {
+      max-width: 30vw;
+    }
 }
 
 .shopping-list--author {
@@ -154,7 +160,7 @@
 .shopping-list--link-list {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   gap: 14px;
   grid-area: link;
   align-items: start;
