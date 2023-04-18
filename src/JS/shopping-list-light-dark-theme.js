@@ -5,6 +5,7 @@ const elements = {
   iconLogo: document.querySelector('#iconLogo'),
   iconShop: document.querySelector('svg.icon__lock'),
   shoppingItems: document.querySelector('div.shopping-main'),
+  mobileMenu: document.querySelector('.mobile-menu__container'),
 };
 
 const handleChange = (element, theme) => {

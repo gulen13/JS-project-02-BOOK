@@ -5,31 +5,32 @@ import ibook from '../images/ibook.png';
 import ibook2x from '../images/ibook@2x.png';
 import bookshop from '../images/bookshop.png';
 import bookshop2x from '../images/bookshop@2x.png';
+import sprite from '../images/icons.svg';
+// import { addPagination } from './pagination';
+
 
 const shoppingUl = document.querySelector('.shopping-list');
 const shoppingWrapper = document.querySelector('.shopping-wrapper');
 const localStorageKey = 'bookarray';
-let uniqueBook = [];
+let bookArray = [];
+// let pagination;
 
 if (
   JSON.parse(localStorage.getItem(localStorageKey)) &&
   JSON.parse(localStorage.getItem(localStorageKey)).length > 0
 ) {
   shoppingWrapper.hidden = true;
-  // getUniqueBook(JSON.parse(localStorage.getItem(localStorageKey)));
-  // renderShoppingList(uniqueBook);
-} else {
-  shoppingWrapper.hidden = false;
+  bookArray = JSON.parse(localStorage.getItem(localStorageKey));
 }
 
-export function getUniqueBook(books) {
+/* export function getUniqueBook(books) {
   return (uniqueBook = Array.from(
     new Set(books.map(item => JSON.stringify(item)))
   ).map(item => JSON.parse(item)));
-}
+} */
 
-export function renderShoppingList(uniqueBook) {
-  const markup = uniqueBook
+export function renderShoppingList(bookArray) {
+  const markup = bookArray
     .map(book => {
       return `
       <li class="shopping-list--item" data-id="${book._id}">
@@ -87,9 +88,11 @@ export function renderShoppingList(uniqueBook) {
         </p>
         <p class="shopping-list--author">${book.author}</p>
         <button class="shopping-list--btn" type="button">
+          <div>
           <svg class="shopping-list--btn__icon">
-            <use href="./images/icons.svg#icon-dump"></use>
+            <use href="${sprite + '#icon-dump'}"></use>
           </svg>
+          </div>
         </button>
       </li>
       `;
@@ -99,16 +102,43 @@ export function renderShoppingList(uniqueBook) {
 }
 
 function deleteBookFromShopList(event) {
-  if (event.target.parentElement.classList.value === 'shopping-list--btn') {
-    let id = event.target.parentElement.parentElement.getAttribute('data-id');
-    let li = event.target.parentElement.parentElement;
-    let ind = uniqueBook.findIndex(e => e._id === id);
+  if (
+    event.target.parentElement.parentElement.parentElement.classList.value ===
+    'shopping-list--btn'
+  ) {
+    let id =
+      event.target.parentElement.parentElement.parentElement.parentElement.getAttribute(
+        'data-id'
+      );
+    let ind = bookArray.findIndex(e => e._id === id);
     if (ind !== -1) {
-      uniqueBook.splice(ind, 1);
-      saveToLocalStorage(localStorageKey, uniqueBook);
+      bookArray.splice(ind, 1);
+      saveToLocalStorage(localStorageKey, bookArray);
     }
-
-    li.remove();
+    if (bookArray.length === 0) {
+      shoppingWrapper.hidden = false;
+    }
+    if (
+      JSON.parse(localStorage.getItem(localStorageKey)) &&
+      JSON.parse(localStorage.getItem(localStorageKey)).length >= 0
+    ) {
+      shoppingUl.innerHTML = '';
+      // renderShoppingList(JSON.parse(localStorage.getItem(localStorageKey)));
+      console.log(ind);
+      console.log(bookArray);
+      const page = Math.ceil((ind+1)/3);
+      const start = (page-1) * 3;
+      const end = start + 3;
+      console.log(start, end);
+      const paginatedData = JSON.parse(localStorage.getItem(localStorageKey)).slice(start, end);
+      console.log(paginatedData);
+      renderShoppingList(paginatedData);
+      // addPagination(JSON.parse(localStorage.getItem(localStorageKey)),1);
+      // pagination = addPagination(
+      //   JSON.parse(localStorage.getItem(localStorageKey)),
+      //   1
+      // );
+    }
   }
 }
 

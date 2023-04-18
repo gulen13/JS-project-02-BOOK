@@ -6,6 +6,7 @@ const elements = {
   iconShop: document.querySelector('svg.icon__lock'),
   categories: document.querySelector('section.categories'),
   btnSeeMore: document.querySelector('.books-container'),
+  mobileMenu: document.querySelector('.mobile-menu__container'),
 };
 
 const handleChange = (element, theme) => {

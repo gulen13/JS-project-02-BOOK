@@ -119,8 +119,7 @@ export async function createMarkupCategory(category) {
             <h2 class="card__title">${book.title}</h2>
             <p class="card__paragraph">${book.author}</p>
           </a>
-        </li>
-    `;
+        </li>`;
 
     cardsContainer.innerHTML += blockCard;
   });
