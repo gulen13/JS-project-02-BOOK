@@ -17,6 +17,7 @@
   border: 2px solid rgba(79, 46, 232, 0.4);
   border-radius: 16px;
   padding: 20px;
+  overflow: hidden;
   @media screen and (min-width: 768px) {
     grid-template-columns: 116px 1fr 1fr;
     grid-template-rows: 1fr 1fr 30px;
@@ -66,6 +67,10 @@
   font-size: 16px;
   line-height: 1.12;
   margin-bottom: 4px;
+  max-width: 145px;
+  @media screen and (max-width: 370px) {
+    max-width: 30vw;
+  }
 }
 
 .shopping-list--category {
@@ -113,10 +118,15 @@
   font-size: 14px;
   line-height: 1.29;
   grid-area: descr;
+  @media screen and (max-width: 370px) {
+    max-width: 75vw;
+  }
 }
 
 .shopping-list--btn {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 14px;
   right: 14px;
@@ -124,8 +134,11 @@
   height: 28px;
   border-radius: 50%;
   background-color: transparent;
-  background-image: url(./../images/icons.svg#icon-dump);
-  //border: none;
+  border: none;
+  &__icon {
+    width: 28px;
+    height: 28px;
+  }
   @media screen and (min-width: 768px) {
     width: 34px;
     height: 34px;
@@ -133,8 +146,8 @@
     right: 24px;
   }
   &__icon {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
   }
 }
 
@@ -149,5 +162,9 @@
     align-items: center;
     justify-content: end;
     gap: 16px;
+  }
+  @media screen and (max-width: 370px) {
+    flex-direction: column;
+    gap: 13px;
   }
 }
