@@ -68,7 +68,7 @@ export async function renderModal(bookID) {
       : 'https://amazon.com'
     }" target="_blank" rel="noopener noreferrer"
                   aria-label="Amazon icon">
-                  <img class="book-stores__img" srcset=" ${amazon} 1x, ${amazon2x} 2x
+                  <img class="book-stores__img img-amazon-main" srcset=" ${amazon} 1x, ${amazon2x} 2x
                  "src="${amazon}" alt="Amazon" width="62" height="19">
                   </a>
               </li>
