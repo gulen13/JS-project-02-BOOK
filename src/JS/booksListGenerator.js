@@ -22,11 +22,10 @@ export async function getTopBooks() {
         createBlock(categoryList);
       });
     } else {
-      Notiflix.Notify.warning();
-      console.error('No data available');
+      Notiflix.Notify.warning('No data available');
     }
   } catch (error) {
-    console.error(error);
+    Notiflix.Notify.info('Oops... Something went wrong(');
   }
 }
 
@@ -121,7 +120,8 @@ export async function createMarkupCategory(category) {
             <h2 class="card__title">${book.title}</h2>
             <p class="card__paragraph">${book.author}</p>
           </a>
-        </li>`;
+        </li>
+    `;
 
     cardsContainer.innerHTML += blockCard;
   });
@@ -129,11 +129,7 @@ export async function createMarkupCategory(category) {
 
 getTopBooks();
 
-
-
-
 // замінити функцію для відображення see more!!!!!!!!!!!!!!!!!!!!!
-
 
 // function createBlock(categoryList) {
 //   const blockForCard = `
@@ -145,8 +141,6 @@ getTopBooks();
 //       </div>
 //     </div>
 //   `;
-
-
 
 //   mainSectionDiv.innerHTML += blockForCard;
 
@@ -171,15 +165,13 @@ getTopBooks();
 //   })
 
 //   adaptiveMarkup(categoryList.books, cardsContainer);
-  
-// }
 
+// }
 
 // export async function createMarkupCategory(category) {
 //   booksTitileHome.classList.add('display-none');
 //   const booksAPI = new BooksAPI();
 //   const selectedCategoryBooks = await booksAPI.fetchBooksByCategory(category);
-
 
 //   const ul = document.querySelector(`[data-ulll="${category}"]`);
 
@@ -189,7 +181,7 @@ getTopBooks();
 
 //   selectedCategoryBooks.data.forEach(book => {
 //     const blockCard = `
-      
+
 //         <li class="list-book__book-card"  data-id="${book._id}">
 //           <a href="#">
 //           <div class="card-thumb">
@@ -198,9 +190,9 @@ getTopBooks();
 //             </div>
 //             <h2 class="card__title">${book.title}</h2>
 //             <p class="card__paragraph">${book.author}</p>
-//           </a>  
-//         </li> 
-      
+//           </a>
+//         </li>
+
 //     `;
 
 //     ul.innerHTML += blockCard;
@@ -208,4 +200,3 @@ getTopBooks();
 // }
 
 // getTopBooks();
-
