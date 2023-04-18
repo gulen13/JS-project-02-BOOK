@@ -10,12 +10,12 @@ galleryElements.insertAdjacentHTML('beforeend', cardsMarkup);
 
 function createGalleryCardsMarkup(foundationsItems) {
   return foundationsItems
-    .map(({ picture1x, link, description }, index) => {
+    .map(({ picture1x, picture2x, link, description }, index) => {
       const formattedNumber = index + 1 < 10 ? `0${index + 1}` : index + 1;
       return `<li class="swiper-slide">
   <p class="foundations__position">${formattedNumber}</p>
   <a class="slider--link" href="${link}" target="_blank" rel="noopener noreferrer">
-    <img class="slider--image" src="${picture1x}" alt="${description}" />
+    <img class="slider--image" srcset="${picture1x}, ${picture2x}" alt="${description}" />
   </a>
 </li>`;
     })
