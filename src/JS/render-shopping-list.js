@@ -11,6 +11,7 @@ import sprite from '../images/icons.svg';
 
 const shoppingUl = document.querySelector('.shopping-list');
 const shoppingWrapper = document.querySelector('.shopping-wrapper');
+const paginationEl = document.querySelector('.tui-pagination');
 const localStorageKey = 'bookarray';
 let bookArray = [];
 // let pagination;
@@ -101,7 +102,7 @@ export function renderShoppingList(bookArray) {
   shoppingUl.insertAdjacentHTML('beforeend', markup);
 }
 
-function deleteBookFromShopList(event) {
+export function deleteBookFromShopList(event) {
   if (
     event.target.parentElement.parentElement.parentElement.classList.value ===
     'shopping-list--btn'
@@ -133,14 +134,12 @@ function deleteBookFromShopList(event) {
       const paginatedData = JSON.parse(localStorage.getItem(localStorageKey)).slice(start, end);
       console.log(paginatedData);
       renderShoppingList(paginatedData);
-      // addPagination(JSON.parse(localStorage.getItem(localStorageKey)),1);
-      // pagination = addPagination(
-      //   JSON.parse(localStorage.getItem(localStorageKey)),
-      //   1
-      // );
+      if (JSON.parse(localStorage.getItem(localStorageKey)).length <= 3) {
+        paginationEl.hidden = true;
+      }
     }
   }
 }
 
-const shoppingDelBtn = document.querySelector('.shopping-list');
-shoppingDelBtn.addEventListener('click', deleteBookFromShopList);
+// const shoppingDelBtn = document.querySelector('.shopping-list');
+// shoppingDelBtn.addEventListener('click', deleteBookFromShopList);
