@@ -1,7 +1,7 @@
 import { BooksAPI } from './fetchBooksAPI';
 
 const mainSectionDiv = document.querySelector('.books-best-container');
-const booksTitileHome = document.querySelector('.books-section__title'); 
+const booksTitileHome = document.querySelector('.books-section__title');
 
 window.addEventListener('resize', function (event) {
   mainSectionDiv.innerHTML = '';
@@ -11,7 +11,7 @@ window.addEventListener('resize', function (event) {
 
 export async function getTopBooks() {
   booksTitileHome.classList.remove('display-none');
-  mainSectionDiv.innerHTML="";
+  mainSectionDiv.innerHTML = '';
   try {
     const booksAPI = new BooksAPI();
     const booksCategories = await booksAPI.fetchTopBooks();
@@ -71,7 +71,7 @@ function createBlock(categoryList) {
 function createCard(books, cardsAmount, cardsBlock) {
   for (let j = 0; j < cardsAmount; j++) {
     const blockCard = `
-      
+
         <li class="list-book__book-card"  data-id="${books[j]._id}">
           <a href="#">
           <div class="card-thumb">
@@ -80,9 +80,9 @@ function createCard(books, cardsAmount, cardsBlock) {
             </div>
             <h2 class="card__title">${books[j].title}</h2>
             <p class="card__paragraph">${books[j].author}</p>
-          </a>  
-        </li> 
-      
+          </a>
+        </li>
+
     `;
 
     cardsBlock.innerHTML += blockCard;
@@ -97,12 +97,12 @@ export async function createMarkupCategory(category) {
   // console.log(selectedCategoryBooks.data);
 
   const cardsBlock = `
-      
+
       <div class="block-for-books">
       <h2 class="block-for-books__title">${category}</h2>
       <ul class="block-for-books__list"></ul>
       </div>
-      
+
     `;
   mainSectionDiv.innerHTML = cardsBlock;
 
@@ -112,7 +112,7 @@ export async function createMarkupCategory(category) {
 
   selectedCategoryBooks.data.forEach(book => {
     const blockCard = `
-      
+
         <li class="list-book__book-card"  data-id="${book._id}">
           <a href="#">
           <div class="card-thumb">
@@ -121,9 +121,9 @@ export async function createMarkupCategory(category) {
             </div>
             <h2 class="card__title">${book.title}</h2>
             <p class="card__paragraph">${book.author}</p>
-          </a>  
-        </li> 
-      
+          </a>
+        </li>
+
     `;
 
     cardsContainer.innerHTML += blockCard;
