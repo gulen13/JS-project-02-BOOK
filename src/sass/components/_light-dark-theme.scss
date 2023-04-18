@@ -15,7 +15,8 @@ header.dark {
 .navigation.dark {
   color: var(--primary-font-color);
   & li:hover,
-  & li:focus {
+  & li:focus,
+  & .active {
     color: var(--header-bg-color);
   }
 }
@@ -54,9 +55,16 @@ header.dark {
   }
 }
 
+body.dark .img-amazon-main{
+  filter: grayscale(70%) brightness(1000%);
+}
+
 // dark theme SHOPPING LIST
 
 .shopping-main.dark {
+  & .shopping-notification {
+    color: var(--second-font-color);
+  }
   & .shopping-list--item {
     background-color: var(--header-bg-color);
   }
@@ -68,6 +76,9 @@ header.dark {
   }
   & .book-stores__img {
     color: var(--primary-font-color);
+  }
+  & .img-amazon {
+    filter: grayscale(70%) brightness(1000%);
   }
   & .tui-first-child,
   & .theme,
@@ -83,8 +94,6 @@ header.dark {
   }
 }
 
-
-
 .mobile-menu__container.dark {
   & .mobile-menu__home,
   & .mobile-menu__shopping {
@@ -95,7 +104,7 @@ header.dark {
     }
   }
   & .button-modal__logout {
-    background-color: var( --primary-font-color);
+    background-color: var(--primary-font-color);
     color: var(--header-bg-color);
   }
 }

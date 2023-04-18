@@ -56,7 +56,7 @@ export function renderShoppingList(bookArray) {
                 : 'https://www.amazon.com/ref=nav_logo'
             };
             })}">
-            <img class="book-stores__img" srcset=" ${amazon} 1x, ${amazon2x}   2x
+            <img class="book-stores__img img-amazon" srcset=" ${amazon} 1x, ${amazon2x}   2x
             "src="${amazon}" alt="Amazon" width="62" height="19">
             </a>
           </li>
