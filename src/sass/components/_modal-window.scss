@@ -56,14 +56,11 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-
-  @media screen and (min-width: 768px) {
-    top: 24px;
-    right: 24px;
-  }
 }
 
 .modal__icon-close {
+  width: 24px;
+  height: 24px;
   fill: var(--icon-color);
 
   &:hover,
@@ -196,7 +193,7 @@
   }
 }
 
-.modal-book__btn {
+.modal-book__btn, .modal-book__btn__remove {
   display: block;
   margin: 0 auto;
   padding: 14px 20px;
