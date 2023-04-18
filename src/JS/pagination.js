@@ -7,7 +7,6 @@ const paginationEl = document.querySelector('.tui-pagination');
 const localStorageKey = 'bookarray';
 const shoppingUl = document.querySelector('.shopping-list');
 
-
 // let page = 1;
 
 export function addPagination(total, page) {
@@ -20,7 +19,7 @@ export function addPagination(total, page) {
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
     template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      page: '<a href="#" class="tui-page-btn theme">{{page}}</a>',
       currentPage:
         '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
       moveButton:
@@ -43,32 +42,52 @@ export function addPagination(total, page) {
   return pagination;
 }
 
-
-const booksArray= getUniqueBook(JSON.parse(localStorage.getItem(localStorageKey)));
-console.log(booksArray);
+/* const booksArray = getUniqueBook(
+  JSON.parse(localStorage.getItem(localStorageKey))
+); */
+//console.log(booksArray);
 // console.log(uniqueBook);
 const booksPerPage = 3;
 let pagination;
 
-if (booksArray.length > 0) {
-pagination = addPagination(booksArray, 1);
-pagination.on('beforeMove', renderNextPage);
-};
-
+if (
+  JSON.parse(localStorage.getItem(localStorageKey)) &&
+  JSON.parse(localStorage.getItem(localStorageKey)).length > 3
+) {
+  pagination = addPagination(
+    JSON.parse(localStorage.getItem(localStorageKey)),
+    1
+  );
+  pagination.on('beforeMove', renderNextPage);
+}
 
 function renderFirstPage() {
-    renderShoppingList(booksArray.slice(0,3));
-};
+  if (
+    JSON.parse(localStorage.getItem(localStorageKey)) &&
+    JSON.parse(localStorage.getItem(localStorageKey)).length > 0
+  ) {
+    renderShoppingList(
+      JSON.parse(localStorage.getItem(localStorageKey)).slice(0, 3)
+    );
+  }
+}
 
 renderFirstPage();
 // pagination.on('beforeMove', renderNextPage);
 
-
 function renderNextPage(eventData) {
-  shoppingUl.innerHTML = "";
-  console.log(eventData);
-  const start = (eventData.page - 1) * booksPerPage;
-  const pageItems = booksArray.slice(start, start + booksPerPage);
-  console.log(start, pageItems);
-  renderShoppingList(pageItems);
-}
+  if (
+    JSON.parse(localStorage.getItem(localStorageKey)) &&
+    JSON.parse(localStorage.getItem(localStorageKey)).length > 0
+  ) {
+    shoppingUl.innerHTML = '';
+    // console.log(eventData);
+    const start = (eventData.page - 1) * booksPerPage;
+    const pageItems = JSON.parse(localStorage.getItem(localStorageKey)).slice(
+      start,
+      start + booksPerPage
+    );
+    // console.log(start, pageItems);
+    renderShoppingList(pageItems);
+  }
+  }
