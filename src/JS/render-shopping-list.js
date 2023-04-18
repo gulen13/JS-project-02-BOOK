@@ -8,9 +8,9 @@ import bookshop2x from '../images/bookshop@2x.png';
 import sprite from '../images/icons.svg';
 // import { addPagination } from './pagination';
 
-
 const shoppingUl = document.querySelector('.shopping-list');
 const shoppingWrapper = document.querySelector('.shopping-wrapper');
+const paginationEl = document.querySelector('.tui-pagination');
 const localStorageKey = 'bookarray';
 let bookArray = [];
 // let pagination;
@@ -117,6 +117,7 @@ function deleteBookFromShopList(event) {
     }
     if (bookArray.length === 0) {
       shoppingWrapper.hidden = false;
+      paginationEl.innerHTML = '';
     }
     if (
       JSON.parse(localStorage.getItem(localStorageKey)) &&
@@ -126,11 +127,13 @@ function deleteBookFromShopList(event) {
       // renderShoppingList(JSON.parse(localStorage.getItem(localStorageKey)));
       console.log(ind);
       console.log(bookArray);
-      const page = Math.ceil((ind+1)/3);
-      const start = (page-1) * 3;
+      const page = Math.ceil((ind + 1) / 3);
+      const start = (page - 1) * 3;
       const end = start + 3;
       console.log(start, end);
-      const paginatedData = JSON.parse(localStorage.getItem(localStorageKey)).slice(start, end);
+      const paginatedData = JSON.parse(
+        localStorage.getItem(localStorageKey)
+      ).slice(start, end);
       console.log(paginatedData);
       renderShoppingList(paginatedData);
       // addPagination(JSON.parse(localStorage.getItem(localStorageKey)),1);
