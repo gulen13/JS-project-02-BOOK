@@ -1,4 +1,5 @@
 import { BooksAPI } from './fetchBooksAPI';
+import Notiflix from 'notiflix';
 
 const mainSectionDiv = document.querySelector('.books-best-container');
 const booksTitileHome = document.querySelector('.books-section__title');
@@ -21,6 +22,7 @@ export async function getTopBooks() {
         createBlock(categoryList);
       });
     } else {
+      Notiflix.Notify.warning();
       console.error('No data available');
     }
   } catch (error) {
@@ -73,7 +75,7 @@ function createCard(books, cardsAmount, cardsBlock) {
     const blockCard = `
 
         <li class="list-book__book-card"  data-id="${books[j]._id}">
-          <a href="#">
+          <a>
           <div class="card-thumb">
             <img src="${books[j].book_image}" alt="${books[j].title}" class="book-card__img"></img>
             <p class="card-overlay-text card-overlay">quick view</p>
@@ -111,7 +113,7 @@ export async function createMarkupCategory(category) {
   selectedCategoryBooks.data.forEach(book => {
     const blockCard = `
         <li class="list-book__book-card"  data-id="${book._id}">
-          <a href="#">
+          <a>
           <div class="card-thumb">
             <img src="${book.book_image}" alt="${book.title}" class="book-card__img"></img>
             <p class="card-overlay-text card-overlay">quick view</p>
