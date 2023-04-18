@@ -1,9 +1,12 @@
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
-  //  background: #b3a6ee;
-    background: #ffffff;
-    border: 1.5px solid #111111;
-border-radius: 8px 8px 0px 0px;
+
+  background: #ffffff;
+  border: 1.5px solid #111111;
+  border-radius: 8px 8px 0px 0px;
 }
 
 .footer__box {
@@ -15,21 +18,17 @@ border-radius: 8px 8px 0px 0px;
   padding: 20px;
   min-height: 77px;
   width: 100%;
-//     background: #ffffff;
-//     border: 1.5px solid #111111;
-// border-radius: 8px 8px 0px 0px;
-  
 }
 .footer__text {
   font-family: 'DM Sans';
-font-style: normal;
-font-weight: 700;
+  font-style: normal;
+  font-weight: 700;
   font-size: 18px;
-line-height: 1.12;
+  line-height: 1.12;
 
-letter-spacing: -0.02em;
+  letter-spacing: -0.02em;
 
-color: rgba(17, 17, 17, 0.6);
+  color: rgba(17, 17, 17, 0.6);
 }
 
 .footer__btn {
@@ -61,5 +60,3 @@ color: rgba(17, 17, 17, 0.6);
     color: white;
   }
 }
-
-
