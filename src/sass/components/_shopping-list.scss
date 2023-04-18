@@ -1,6 +1,5 @@
 .shopping--section {
   background-color: var(--main-bg-color);
-  margin-top: 60px;
   padding: 40px 0px;
   @media screen and (min-width: 768px) {
     padding: 40px 0px;
@@ -13,6 +12,8 @@
 .shopping-container {
   @media screen and (min-width: 1440px) {
     display: flex;
+    gap: 40px;
+    align-items: baseline;
   }
 }
 .title {
@@ -58,6 +59,7 @@ margin: 120px 55px 302px;
 }
 
 .shopping-funds {
+  margin-top: -40px;
   @media screen and (max-width: 1439.8px) {
 display: none;
   }

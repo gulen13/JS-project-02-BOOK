@@ -1,0 +1,8 @@
+const homeEl = document.querySelector('.navigation__home');
+const shoppingEl = document.querySelector('.navigation__shopping');
+window.addEventListener('load', addClassCurrent);
+
+function addClassCurrent() {
+  homeEl.classList.toggle('current');
+  shoppingEl.classList.toggle('current');
+}

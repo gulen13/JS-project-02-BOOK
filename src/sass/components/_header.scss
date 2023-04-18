@@ -68,6 +68,11 @@
   line-height: 1.29;
 }
 
+.navigation__home--curent {
+  background: #eac645;
+    border-color: #eac645;
+}
+
 .navigation__shopping {
   transition: transform 0.2s ease-in-out;
   display: inline-flex;
@@ -101,6 +106,12 @@
     border-color: #eac645;
   }
 }
+
+.current {
+  background: #eac645;
+  border-color: #eac645;
+}
+
 .icon__lock {
   margin-left: 4px;
 }
