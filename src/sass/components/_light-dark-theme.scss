@@ -69,10 +69,17 @@ header.dark {
   & .book-stores__img {
     color: var(--primary-font-color);
   }
-
   & .tui-first-child,
+  & .theme,
   & .tui-last-child {
     border: 1px solid var(--border-color);
+    &:hover,
+    &:focus {
+      color: var(--header-bg-color);
+    }
+  }
+  & .tui-is-selected {
+    background-color: var(--border-color);
   }
 }
 
