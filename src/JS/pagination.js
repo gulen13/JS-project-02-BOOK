@@ -52,7 +52,7 @@ let pagination;
 
 if (
   JSON.parse(localStorage.getItem(localStorageKey)) &&
-  JSON.parse(localStorage.getItem(localStorageKey)).length > 0
+  JSON.parse(localStorage.getItem(localStorageKey)).length > 3
 ) {
   pagination = addPagination(
     JSON.parse(localStorage.getItem(localStorageKey)),
@@ -81,13 +81,13 @@ function renderNextPage(eventData) {
     JSON.parse(localStorage.getItem(localStorageKey)).length > 0
   ) {
     shoppingUl.innerHTML = '';
-    console.log(eventData);
+    // console.log(eventData);
     const start = (eventData.page - 1) * booksPerPage;
     const pageItems = JSON.parse(localStorage.getItem(localStorageKey)).slice(
       start,
       start + booksPerPage
     );
-    console.log(start, pageItems);
+    // console.log(start, pageItems);
     renderShoppingList(pageItems);
   }
-}
+  }
