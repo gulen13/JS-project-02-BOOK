@@ -92,15 +92,17 @@ shoppingDelBtn.addEventListener('click', deleteAndUpdatePagination);
 function deleteAndUpdatePagination(book) {
   deleteBookFromShopList(book);
   // pagination = new Pagination('tui-pagination-container', options);
-  if (!JSON.parse(localStorage.getItem(localStorageKey))) {
+  if (
+    !JSON.parse(localStorage.getItem(localStorageKey)) ||
+    JSON.parse(localStorage.getItem(localStorageKey)).length <=3
+    ) {
     paginationEl.innerHTML = '';
-  }
-  if (JSON.parse(localStorage.getItem(localStorageKey)).length % 3 === 0) {
+  } else if (JSON.parse(localStorage.getItem(localStorageKey)).length % 3 === 0) {
     pagination.reset(JSON.parse(localStorage.getItem(localStorageKey)).length);
     pagination.movePageTo(
-      Math.ceil(
-        (JSON.parse(localStorage.getItem(localStorageKey)).length - 1) / 3
-      )
+      Math.ceil(JSON.parse(localStorage.getItem(localStorageKey)).length - 1) /
+        3
     );
   }
+
 }
