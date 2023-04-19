@@ -37,6 +37,9 @@ header.dark {
   &::-webkit-scrollbar-thumb {
     background: #11111199;
   }
+  & .categories__active {
+    color: var(--second-accent-color);
+  }
 }
 
 .books-section__title.dark {
