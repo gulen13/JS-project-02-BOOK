@@ -15,7 +15,7 @@ function createGalleryCardsMarkup(foundationsItems) {
       return `<li class="swiper-slide">
   <p class="foundations__position">${formattedNumber}</p>
   <a class="slider--link" href="${link}" target="_blank" rel="noopener noreferrer">
-    <img class="slider--image" srcset="${picture1x}, ${picture2x}" sizes="100vw" src="${picture1x}" alt="${description}" />
+    <img class="slider--image" srcset="${picture1x}, ${picture2x}" src="${picture1x}" alt="${description}" width="130" height="40"/>
   </a>
 </li>`;
     })
