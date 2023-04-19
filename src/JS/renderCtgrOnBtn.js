@@ -1,7 +1,9 @@
 import { createMarkupCategory, getTopBooks } from './booksListGenerator';
-import { renderCategoriesList } from './renderCategoriesList'
+import { spinerRender } from './spiner';
+import { renderCategoriesList } from './renderCategoriesList';
 
 const sideCagories = document.querySelector('.sidebar-categories');
+const spiner = document.querySelector('.lds-roller');
 
 sideCagories.addEventListener('click', e => {
 
@@ -10,7 +12,10 @@ sideCagories.addEventListener('click', e => {
   }
 
   let categoryName = e.target.textContent;
+
   if (categoryName === "All categories") {
+    spiner.classList.remove('visually-hidden');
+    spinerRender();
     getTopBooks();
   } else {
     createMarkupCategory(categoryName);
