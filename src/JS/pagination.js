@@ -53,7 +53,7 @@ if (
 ) {
   pagination = new Pagination('tui-pagination-container', options);
   pagination.on('beforeMove', renderNextPage);
-  }
+}
 
 function renderFirstPage() {
   if (
@@ -98,8 +98,9 @@ function deleteAndUpdatePagination(book) {
   if (JSON.parse(localStorage.getItem(localStorageKey)).length % 3 === 0) {
     pagination.reset(JSON.parse(localStorage.getItem(localStorageKey)).length);
     pagination.movePageTo(
-      Math.ceil(JSON.parse(localStorage.getItem(localStorageKey)).length - 1) /
-        3
+      Math.ceil(
+        (JSON.parse(localStorage.getItem(localStorageKey)).length - 1) / 3
+      )
     );
   }
 }
