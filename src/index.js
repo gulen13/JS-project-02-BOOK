@@ -9,3 +9,4 @@ import './JS/renderCtgrOnBtn';
 import './JS/scroll-up';
 // import './JS/firebase';
 import './JS/preloader';
+import './JS/footerModal';
