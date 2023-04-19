@@ -87,7 +87,7 @@ function renderNextPage(eventData) {
 
 const shoppingDelBtn = document.querySelector('.shopping-list');
 shoppingDelBtn.addEventListener('click', deleteAndUpdatePagination);
-console.log(JSON.parse(localStorage.getItem(localStorageKey)));
+// console.log(JSON.parse(localStorage.getItem(localStorageKey)));
 
 function deleteAndUpdatePagination(book) {
   deleteBookFromShopList(book);
