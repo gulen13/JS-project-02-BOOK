@@ -6,8 +6,7 @@
           <use
             id="iconLogo"
             href="../src/images/icons.svg#icon-logo"
-          ></use></svg
-      ></a>
+          ></use></svg></a>
       <ul class="navigation__list">
         <li class="navigation__item">
           <a href="./index.html" class="navigation__home active">HOME</a>
@@ -16,8 +15,7 @@
           <a href="./shopping-list.html" class="navigation__shopping"
             >SHOPPING LIST
             <svg class="icon__lock" width="20" height="20">
-              <use href="../src/images/icons.svg#icon-cart"></use></svg
-          ></a>
+              <use href="../src/images/icons.svg#icon-cart"></use></svg></a>
         </li>
       </ul>
     </nav>
@@ -25,14 +23,14 @@
       <div class="switch">
         <input class="theme-switcher" type="checkbox" />
       </div>
-      <button type="button" class="button-header">
+      <button type="button" class="button-header" aria-label="Sign up">
         Sign up
         <svg class="logo__svg" width="20" height="20">
           <use href="../src/images/icons.svg#icon-arrow-right"></use>
         </svg>
       </button>
     </div>
-    <button type="button" class="mobile-menu-open" data-menu-open>
+    <button type="button" class="mobile-menu-open" aria-label="Open mobile menu" data-menu-open>
       <svg class="mobile-menu-open__icon" width="28" height="28">
         <use href="../src/images/icons.svg#icon-menu"></use>
       </svg>
@@ -40,6 +38,7 @@
     <button
       type="button"
       class="mobile-menu__close-button is-hidden"
+      aria-label="Close mobile menu"
       data-menu-close
     >
       <svg class="mobile-menu__close-icon" width="28" height="28">

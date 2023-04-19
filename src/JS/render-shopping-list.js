@@ -87,7 +87,7 @@ export function renderShoppingList(bookArray) {
         ${book.description ? book.description : 'N/A'}
         </p>
         <p class="shopping-list--author">${book.author}</p>
-        <button class="shopping-list--btn" type="button">
+        <button class="shopping-list--btn" type="button" aria-label="Remove">
           <div>
           <svg class="shopping-list--btn__icon">
             <use href="${sprite + '#icon-dump'}"></use>

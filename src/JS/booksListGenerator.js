@@ -45,7 +45,7 @@ function createBlock(categoryList) {
       <p class="list-markup__paragraph">${categoryList.list_name}</p>
       <ul class="list-markup__block"></ul>
       <div class="list-markup__button-wrapper">
-        <button class="list-markup__see-more-button" data-category="${categoryList.list_name}">see more</button>
+        <button class="list-markup__see-more-button" aria-label="see more" data-category="${categoryList.list_name}">see more</button>
       </div>
     </div>
   `;
