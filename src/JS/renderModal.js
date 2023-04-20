@@ -124,15 +124,11 @@ export async function renderModal(bookID) {
 
   showModal(book);
 
-  addBookBtnEl.addEventListener('click', async () => {
-    const book = await booksAPI.fetchBookByID(bookID);
-    bookData = book.data;
+  addBookBtnEl.addEventListener('click', () => {
     addToShoppingList(bookData);
     console.log('ДОДАВАННЯ');
   });
-  deleteBookBtnEl.addEventListener('click', async () => {
-    const book = await booksAPI.fetchBookByID(bookID);
-    bookData = book.data;
+  deleteBookBtnEl.addEventListener('click', () => {
     deleteBookFromShopList(bookData);
     console.log('ПРИБИРАННЯ');
   });
@@ -222,3 +218,14 @@ function handleCloseModal(event) {
     closeModal();
   }
 }
+
+
+addBookBtnEl.removeEventListener('click', () => {
+  addToShoppingList(bookData);
+  console.log('ДОДАВАННЯ');
+});
+
+deleteBookBtnEl.removeEventListener('click', () => {
+  deleteBookFromShopList(bookData);
+  console.log('ПРИБИРАННЯ');
+});
