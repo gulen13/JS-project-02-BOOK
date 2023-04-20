@@ -57,7 +57,7 @@ export function renderShoppingList(bookArray) {
               book.buy_links.find(link => link.name === 'Amazon').url.trim()
                 ? book.buy_links.find(link => link.name === 'Amazon').url.trim()
                 : 'https://www.amazon.com/ref=nav_logo'
-            }">
+            }" target="_blank">
             <img class="book-stores__img img-amazon" srcset=" ${amazon} 1x, ${amazon2x}   2x
             "src="${amazon}" alt="Amazon" width="62" height="19">
             </a>
@@ -71,7 +71,7 @@ export function renderShoppingList(bookArray) {
                     .find(link => link.name === 'Apple Books')
                     .url.trim()
                 : 'https://www.apple.com/ua/apple-books/'
-            }">
+            }" target="_blank">
             <img class="book-stores__img" srcset=" ${ibook} 1x, ${ibook2x}   2x
             "src="${ibook}" alt="Apple Books" width="33" height="32">
             </a>
@@ -83,7 +83,7 @@ export function renderShoppingList(bookArray) {
                     .find(link => link.name === 'Bookshop')
                     .url.trim()
                 : 'https://bookshop.org/'
-            }">
+            }" target="_blank">
             <img class="book-stores__img" srcset=" ${bookshop} 1x, ${bookshop2x}   2x
             "src="${bookshop}" alt="Bookshops" width="38" height="36">
             </a>
