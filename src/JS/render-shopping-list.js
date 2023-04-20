@@ -32,9 +32,9 @@ if (
 export function renderShoppingList(bookArray) {
   const markup = bookArray
     .map(book => {
-      console.log(
-        book.buy_links.find(link => link.name === 'Apple Books').url.toString()
-      );
+      // console.log(
+      //   book.buy_links.find(link => link.name === 'Apple Books').url.toString()
+      // );
       return `
       <li class="shopping-list--item" data-id="${book._id}">
         <div class="shopping-list--img-wrapper">
@@ -130,17 +130,17 @@ export function deleteBookFromShopList(event) {
     ) {
       shoppingUl.innerHTML = '';
       // renderShoppingList(JSON.parse(localStorage.getItem(localStorageKey)));
-      console.log(ind);
-      console.log(bookArray);
+      // console.log(ind);
+      // console.log(bookArray);
       const page = Math.ceil((ind + 1) / 3);
-      console.log(Math.ceil((ind + 1) / 3));
+      // console.log(Math.ceil((ind + 1) / 3));
       const start = (page - 1) * 3;
       const end = start + 3;
-      console.log(start, end);
+      // console.log(start, end);
       const paginatedData = JSON.parse(
         localStorage.getItem(localStorageKey)
       ).slice(start, end);
-      console.log(paginatedData);
+      // console.log(paginatedData);
       renderShoppingList(paginatedData);
       if (JSON.parse(localStorage.getItem(localStorageKey)).length <= 3) {
         paginationEl.hidden = true;

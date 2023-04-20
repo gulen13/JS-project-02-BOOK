@@ -63,7 +63,7 @@ function createBlock(categoryList) {
   seeMoreButtons.forEach(button => {
     button.addEventListener('click', () => {
       const category = button.dataset.category;
-      console.log(category);
+      // console.log(category);
       createMarkupCategory(category);
     });
   });

@@ -126,11 +126,11 @@ export async function renderModal(bookID) {
 
   addBookBtnEl.addEventListener('click', () => {
     addToShoppingList(bookData);
-    console.log('ДОДАВАННЯ');
+    // console.log('ДОДАВАННЯ');
   });
   deleteBookBtnEl.addEventListener('click', () => {
     deleteBookFromShopList(bookData);
-    console.log('ПРИБИРАННЯ');
+    // console.log('ПРИБИРАННЯ');
   });
 }
 
@@ -149,7 +149,7 @@ function addToShoppingList(book) {
   underBtnText.classList.add('modal-book__underbtn');
   modalWrapEl.appendChild(underBtnText);
   bookArray.push(oneBook);
-  console.log(bookArray);
+  // console.log(bookArray);
   saveToLocalStorage('bookarray', bookArray);
   deleteBookBtnEl.classList.remove('visually-hidden');
   addBookBtnEl.classList.add('visually-hidden');
@@ -167,9 +167,9 @@ function deleteBookFromShopList(book) {
     deleteBookBtnEl.classList.add('visually-hidden');
 
     let index = bookArray.findIndex(e => e._id === oneBook._id);
-    console.log(index);
+    // console.log(index);
     bookArray.splice(index, 1);
-    console.log(bookArray);
+    // console.log(bookArray);
     saveToLocalStorage('bookarray', bookArray);
     // deleteBookBtnEl.removeEventListener('click', deleteBookFromShopList(bookData));
 
@@ -185,10 +185,10 @@ function showModal(book) {
 
   let oneBook = { ...bookData };
   let bookArray = JSON.parse(localStorage.getItem('bookarray')) || [];
-  console.log(bookArray.find(book => book._id === oneBook._id));
+  // console.log(bookArray.find(book => book._id === oneBook._id));
   if (bookArray.find(book => book._id === oneBook._id)) {
     // debugger;
-    console.log(bookArray.find(book => book._id === oneBook._id));
+    // console.log(bookArray.find(book => book._id === oneBook._id));
     addBookBtnEl.classList.add('visually-hidden');
     deleteBookBtnEl.classList.remove('visually-hidden');
   } else {
@@ -222,10 +222,10 @@ function handleCloseModal(event) {
 
 addBookBtnEl.removeEventListener('click', () => {
   addToShoppingList(bookData);
-  console.log('ДОДАВАННЯ');
+  // console.log('ДОДАВАННЯ');
 });
 
 deleteBookBtnEl.removeEventListener('click', () => {
   deleteBookFromShopList(bookData);
-  console.log('ПРИБИРАННЯ');
+  // console.log('ПРИБИРАННЯ');
 });
