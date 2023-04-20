@@ -94,7 +94,7 @@ function deleteAndUpdatePagination(book) {
   // pagination = new Pagination('tui-pagination-container', options);
   if (
     !JSON.parse(localStorage.getItem(localStorageKey)) ||
-    JSON.parse(localStorage.getItem(localStorageKey)).length <=3
+    JSON.parse(localStorage.getItem(localStorageKey)).length <3
     ) {
     paginationEl.innerHTML = '';
   } else if (JSON.parse(localStorage.getItem(localStorageKey)).length % 3 === 0) {
