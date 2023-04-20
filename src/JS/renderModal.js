@@ -41,63 +41,56 @@ export async function renderModal(bookID) {
       <div class="modal-book">
       <picture>
       <source media="(max-width: 767px)"
-        srcset="${
-          book_image
-            ? book_image
-            : './images/blank-l.jpg 1x, ./images/blank-l@2x.jpg 2x'
-        }"
+        srcset="${book_image
+      ? book_image
+      : './images/blank-l.jpg 1x, ./images/blank-l@2x.jpg 2x'
+    }"
         type="image/jpg" /> 
   
         <source media="(min-width: 768px)"
-          srcset="${
-            book_image
-              ? book_image
-              : './images/blank-M.jpg 1x, ./images/blank-M@2x.jpg 2x'
-          }"
+          srcset="${book_image
+      ? book_image
+      : './images/blank-M.jpg 1x, ./images/blank-M@2x.jpg 2x'
+    }"
           type="image/jpg" /> 
   
-          <img class="modal-book__img" src="${
-            book_image ? book_image : './images/blank-M.jpg'
-          }        
+          <img class="modal-book__img" src="${book_image ? book_image : './images/blank-M.jpg'
+    }        
         }" alt="Book cover" loading="lazy" width="330" heigth="485"/>
       </picture>
         <div class="modal-book__description">
           <div class="modal-book__info">
             <h2 class="modal-book__title">${title ? title : 'N/A'}</h2>
             <h3 class="modal-book__author">${author ? author : 'N/A'}</h3>
-            <p class="modal-book__about">${
-              description ? description : 'N/A'
-            }</p>
+            <p class="modal-book__about">${description ? description : 'N/A'
+    }</p>
           </div>
           <div>
             <ul class="book-stores">
               <li class="book-stores__item">
-                <a class="book-stores__link" href="${
-                  buy_links.find(link => link.name === 'Amazon').url
-                    ? buy_links.find(link => link.name === 'Amazon').url
-                    : 'https://amazon.com'
-                }" target="_blank" rel="noopener noreferrer"
+                <a class="book-stores__link" href="${buy_links.find(link => link.name === 'Amazon').url
+      ? buy_links.find(link => link.name === 'Amazon').url
+      : 'https://amazon.com'
+    }" target="_blank" rel="noopener noreferrer"
                   aria-label="Amazon icon">
                   <img class="book-stores__img img-amazon-main" srcset=" ${amazon} 1x, ${amazon2x} 2x
                  "src="${amazon}" alt="Amazon" width="62" height="19">
                   </a>
               </li>
               <li class="book-stores__item">
-                <a class="book-stores__link" href="${
-                  buy_links.find(link => link.name === 'Apple Books').url
-                    ? buy_links.find(link => link.name === 'Apple Books').url
-                    : 'https://apple.com/ua/apple-books/'
-                }" target="_blank" rel="noopener noreferrer"
+                <a class="book-stores__link" href="${buy_links.find(link => link.name === 'Apple Books').url
+      ? buy_links.find(link => link.name === 'Apple Books').url
+      : 'https://apple.com/ua/apple-books/'
+    }" target="_blank" rel="noopener noreferrer"
                   aria-label="Apple Books icon">
                   <img class="book-stores__img" srcset=" ${ibook} 1x, ${ibook2x} 2x
                  "src="${ibook}" alt="Apple Books" width="33" height="32"></a>
               </li>
               <li class="book-stores__item">
-                <a class="book-stores__link" href="${
-                  buy_links.find(link => link.name === 'Bookshop').url
-                    ? buy_links.find(link => link.name === 'Bookshop').url
-                    : 'https://bookshop.org/books/'
-                }" target="_blank" rel="noopener noreferrer"
+                <a class="book-stores__link" href="${buy_links.find(link => link.name === 'Bookshop').url
+      ? buy_links.find(link => link.name === 'Bookshop').url
+      : 'https://bookshop.org/books/'
+    }" target="_blank" rel="noopener noreferrer"
                   aria-label="Bookshop icon">
                   <img class="book-stores__img" srcset=" ${bookshop} 1x, ${bookshop2x} 2x
                  "src="${bookshop}" alt="Bookshops" width="38" height="36"></a>
@@ -172,7 +165,7 @@ function deleteBookFromShopList(book) {
     // console.log(bookArray);
     saveToLocalStorage('bookarray', bookArray);
     // deleteBookBtnEl.removeEventListener('click', deleteBookFromShopList(bookData));
-
+    underBtnText.textContent = '';
     return;
   }
 }
