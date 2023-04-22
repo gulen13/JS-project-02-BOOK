@@ -9,7 +9,7 @@
   z-index: 1000;
   opacity: 1;
   visibility: visible;
-
+  overflow: hidden;
   transition-property: opacity, visibility;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -21,11 +21,6 @@
   pointer-events: none;
 }
 .footer-backdrop.is-hidden .footer-modal {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-
   transform: translate(-50%, -50%) scale(0.6);
 }
 
@@ -40,10 +35,10 @@
   background-color: var(--modal-bg-color);
   border: 2px solid var(--border-color);
   border-radius: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   transition: transform var(--transition), scale var(--transition);
-  z-index: 100;
+  z-index: 5000;
 
   @media screen and (min-width: 375px) {
     width: 335px;
