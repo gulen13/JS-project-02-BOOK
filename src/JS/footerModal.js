@@ -25,6 +25,7 @@ function handleOpenModal() {
   document.addEventListener('keydown', handleEscCloseFooterModal);
   document.addEventListener('click', handleEscCloseFooterModal);
   // addEvtListener();
+  document.body.style.overflow = 'hidden';
 }
 
 function handleCloseModal() {
@@ -38,7 +39,7 @@ function handleCloseModal() {
 
 function handleEscCloseFooterModal(event) {
   if (
-    event.target === backdrop ||
+    event.target === refs.backdrop ||
     (event.type === 'keydown' && event.key === 'Escape')
   ) {
     handleCloseModal();
